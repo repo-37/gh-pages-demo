@@ -12,28 +12,92 @@ Built strictly using **pure grayscales** (zero chromatic tinting, $R = G = B$).
 
 - **Zero-Tint Grayscale Scale**: Uses an absolute neutral 13-step scale from `--gray-0` (`#000000`) through `--gray-100` (`#ffffff`). No slate, blue, or zinc color bleed.
 - **Fixed Shell + Scroll-Spy**: Two-column layout with a fixed viewport sidebar on desktop, scrollable content pane, and native `IntersectionObserver` scroll-spy navigation.
-- **Components Included**:
-  - **Foundations**: Grayscale Token Scale, Typographic Hierarchy
-  - **Primitives**: Buttons (Primary, Secondary, Outline, Disabled), Badges & Status Indicators, Callouts & Alerts
-  - **Structures**: Cards & Metric Surfaces, Tabular Data Tables, Form Controls & Inputs
+
+## Components Included
+
+### 1. Foundations
+- **Grayscale Token Scale**: Swatches and token definitions for 13 pure neutral steps.
+- **Typographic Scale**: Hierarchical sans-serif titles and monospace telemetry labels.
+
+### 2. Primitives
+- **Buttons**: Primary Solid, Secondary Surface, Outline Stroke, and Disabled states.
+- **Badges & Tags**: Status pills and active category indicators mapped to shade contrast.
+- **Callouts & Alerts**: Info, subtle technical details, and elevated caution notices.
+
+### 3. Visualisations
+- **Matplotlib Chart Wrapper (`.viz-frame`)**:
+  - Header actions, dark-mode canvas, publication paper canvas (`.paper-surface`), metadata footer.
+  - Native Python Matplotlib SVG vector output with pure neutral palettes.
+- **Mermaid Diagrams (`.mermaid-frame`)**:
+  - Client-side rendered Mermaid.js diagrams using custom grayscale themes.
+  - Directional flowcharts, state transitions, and node highlights.
+- **ASCII Architecture (`.ascii-frame`)**:
+  - Monospace UTF-8 Unicode box-drawing diagram wrapper (`.ascii-content`) preserving column alignment with zero reflow.
+
+### 4. Structures
+- **Cards & Metric Surfaces**: Quantitative metric cards with monospace units.
+- **Data Tables**: Tabular telemetry displays with clean hover feedback.
+- **Form Controls**: Text inputs with high-contrast pure white focus indicators.
 
 ## Repository Structure
 
 ```
 gh-pages-demo/
-├── index.html   — Component library interactive showcase
-├── style.css    — Pure grayscale CSS tokens, layout shell, and component primitives
-├── app.js       — Native IntersectionObserver scroll-spy and mobile navigation
-├── README.md    — Component system guide
-└── .nojekyll    — Direct GitHub Pages static deployment
+├── index.html        — Interactive component library showcase
+├── style.css         — Pure grayscale CSS tokens, layout shell, and component primitives
+├── app.js            — Native IntersectionObserver scroll-spy and mobile navigation
+├── sample-chart.svg  — Pure grayscale vector chart generated via Python/matplotlib
+├── README.md         — Component system guide
+└── .nojekyll         — Direct GitHub Pages static deployment
 ```
 
-## Adding New Components
+## Adding New Visualisations
 
-1. Open `style.css` and declare classes referencing pure grayscale variables (`var(--gray-*)` or semantic `--color-surface-*`, `--color-border-*`, `--color-text-*`).
-2. Add a showcase `<section class="page" id="your-component">` block to `index.html`.
-3. Add a `<a class="nav-link" href="#your-component" data-target="your-component">` link to the sidebar.
-4. Changes automatically integrate into the scroll-spy observer without extra JavaScript.
+### Matplotlib Plot
+```python
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+fig.patch.set_facecolor('#121212')
+ax.set_facecolor('#121212')
+ax.plot(x, y, color='#ffffff')
+fig.savefig('plot.svg', facecolor=fig.get_facecolor())
+```
+Wrap in:
+```html
+<div class="viz-frame">
+  <div class="viz-header"><div class="viz-title">FIG · Plot Title</div></div>
+  <div class="viz-canvas"><img src="plot.svg" /></div>
+  <div class="viz-footer"><span>Metadata caption</span></div>
+</div>
+```
+
+### Mermaid Diagram
+```html
+<div class="mermaid-frame">
+  <div class="viz-header"><div class="viz-title">DIAG · System Pipeline</div></div>
+  <div class="mermaid-content">
+    <pre class="mermaid">
+      graph LR
+        A[Input] --> B[Processing]
+        B --> C[Output]
+    </pre>
+  </div>
+  <div class="viz-footer"><span>Engine: Mermaid.js</span></div>
+</div>
+```
+
+### ASCII Architecture Frame
+```html
+<div class="ascii-frame">
+  <div class="viz-header"><div class="viz-title">TOPOLOGY · Architecture</div></div>
+  <pre class="ascii-content">
+┌─────────────┐     ┌─────────────┐
+│  Component  │ ──► │  Service    │
+└─────────────┘     └─────────────┘
+  </pre>
+  <div class="viz-footer"><span>UTF-8 Box Drawing</span></div>
+</div>
+```
 
 ## License
 

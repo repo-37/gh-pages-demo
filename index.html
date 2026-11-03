@@ -5,6 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Component Library · Pure Grayscale Design System</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Native Mermaid.js integration with strict dark/neutral theme variables -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        darkMode: true,
+        background: '#121212',
+        mainBkg: '#1a1a1a',
+        primaryColor: '#1a1a1a',
+        primaryTextColor: '#e5e5e5',
+        primaryBorderColor: '#404040',
+        lineColor: '#737373',
+        secondaryColor: '#242424',
+        tertiaryColor: '#121212',
+        nodeBorder: '#404040',
+        clusterBkg: '#1a1a1a',
+        clusterBorder: '#303030',
+        edgeLabelBackground: '#121212',
+        fontFamily: 'Inter, system-ui, sans-serif'
+      }
+    });
+  </script>
 </head>
 <body>
 
@@ -63,6 +87,20 @@
         <a class="nav-link" href="#callouts" data-target="callouts">
           <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Callouts &amp; Alerts
+        </a>
+
+        <div class="nav-group-label">Visualisations</div>
+        <a class="nav-link" href="#charts" data-target="charts">
+          <svg class="nav-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Matplotlib Wrapper
+        </a>
+        <a class="nav-link" href="#mermaid" data-target="mermaid">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Mermaid Diagrams
+        </a>
+        <a class="nav-link" href="#ascii" data-target="ascii">
+          <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          ASCII Architecture
         </a>
 
         <div class="nav-group-label">Structures</div>
@@ -129,7 +167,7 @@
           <ul>
             <li><strong>Content-First Minimalism:</strong> Chrome and decorative framing are reduced to purposeful spatial lines and pure value hierarchy.</li>
             <li><strong>Strict Value Contrast:</strong> High-density UI requiring clarity across deep dark surfaces (<code>#000000</code> page canvas to <code>#ffffff</code> accents).</li>
-            <li><strong>Zero Dependencies:</strong> 100% vanilla CSS custom properties and lightweight native DOM scripting.</li>
+            <li><strong>Publication Paper Surfaces:</strong> Scientific chart surfaces supporting theme-invariant high contrast paper renders.</li>
           </ul>
 
           <div class="card-row">
@@ -142,8 +180,8 @@
               <div class="card-value">0% (Pure R=G=B)</div>
             </div>
             <div class="card">
-              <div class="card-label">WCAG Contrast</div>
-              <div class="card-value">AAA compliant</div>
+              <div class="card-label">Visualisers</div>
+              <div class="card-value">Matplotlib · Mermaid · ASCII</div>
             </div>
           </div>
         </div>
@@ -256,7 +294,6 @@
           <pre><code>--color-surface-page:     var(--gray-0);   /* #000000 */
 --color-surface-card:     var(--gray-10);  /* #121212 */
 --color-surface-hover:    var(--gray-15);  /* #1a1a1a */
---color-surface-active:   var(--gray-20);  /* #242424 */
 --color-border-subtle:    var(--gray-20);  /* #242424 */
 --color-border-default:   var(--gray-25);  /* #303030 */
 --color-text-primary:     var(--gray-90);  /* #e5e5e5 */
@@ -300,12 +337,6 @@
             <button class="btn btn-outline">Outline Stroke</button>
             <button class="btn btn-disabled" disabled>Disabled State</button>
           </div>
-
-          <h2>Code Example</h2>
-          <pre><code>&lt;button class="btn btn-primary"&gt;Primary Solid&lt;/button&gt;
-&lt;button class="btn btn-secondary"&gt;Secondary Surface&lt;/button&gt;
-&lt;button class="btn btn-outline"&gt;Outline Stroke&lt;/button&gt;
-&lt;button class="btn btn-disabled" disabled&gt;Disabled State&lt;/button&gt;</code></pre>
         </div>
       </section>
 
@@ -325,44 +356,6 @@
             <span class="badge badge-subtle">SUBTLE OUTLINE</span>
             <span class="badge badge-default badge-dot">COMMITTED</span>
             <span class="badge badge-subtle badge-dot">STANDBY</span>
-          </div>
-
-          <h2>Status Color System Mapping (Monochrome Fallback)</h2>
-          <p>
-            When strictly operating without color tints, status mapping preserves hierarchy via shade and border density:
-          </p>
-          <div class="table-wrap">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Status State</th>
-                  <th>Visual Treatment</th>
-                  <th>Token Mapping</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Active / Current</td>
-                  <td>Solid White Inversion</td>
-                  <td><code>bg-gray-100 text-gray-0</code></td>
-                </tr>
-                <tr>
-                  <td>Queued / Draft</td>
-                  <td>Mid-tone Border + Label</td>
-                  <td><code>border-gray-30 text-gray-90</code></td>
-                </tr>
-                <tr>
-                  <td>Review / Blocked</td>
-                  <td>Double-weighted Border</td>
-                  <td><code>border-gray-50 text-gray-100</code></td>
-                </tr>
-                <tr>
-                  <td>Complete / Muted</td>
-                  <td>Subtle Low-contrast</td>
-                  <td><code>border-gray-20 text-gray-50</code></td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </section>
@@ -393,7 +386,174 @@
         </div>
       </section>
 
-      <!-- SECTION 7: Surfaces -->
+      <!-- SECTION 7: Matplotlib Chart Wrapper -->
+      <section class="page" id="charts">
+        <div class="page-inner">
+          <div class="breadcrumb">Visualisations</div>
+          <h1 class="page-title">Matplotlib Chart Wrapper</h1>
+          <p class="page-lead">
+            Wrapper component (<code>.viz-frame</code>) for embedding scientific plots, telemetry curves, and analytical outputs rendered from Python / Matplotlib.
+          </p>
+
+          <div class="viz-frame">
+            <div class="viz-header">
+              <div class="viz-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                FIG-01 · In-Card Telemetry Response Curve (Dark Mode)
+              </div>
+              <div class="viz-actions">
+                <button class="viz-btn" onclick="window.open('sample-chart.svg')">SVG</button>
+                <button class="viz-btn" onclick="alert('Export Raw Data JSON')">DATA</button>
+              </div>
+            </div>
+            <div class="viz-canvas">
+              <img src="sample-chart.svg" alt="Matplotlib Telemetry Signal Response Curve in pure grayscale" />
+            </div>
+            <div class="viz-footer">
+              <span>Source: telemetry_signal_probe.py · 100 samples</span>
+              <span>Render: vector SVG (150 dpi)</span>
+            </div>
+          </div>
+
+          <h2>Publication Theme ("Paper" Variant)</h2>
+          <p>
+            Theme-invariant white paper background (<code>--color-chart-paper</code>) for formal publication reports and export to light print mediums:
+          </p>
+
+          <div class="viz-frame paper-surface">
+            <div class="viz-header">
+              <div class="viz-title">
+                FIG-02 · Publication Paper Canvas
+              </div>
+              <div class="viz-actions">
+                <span class="badge badge-default">PRINT-SAFE</span>
+              </div>
+            </div>
+            <div class="viz-canvas">
+              <!-- Re-styled paper SVG diagram -->
+              <svg width="560" height="160" viewBox="0 0 560 160" style="background:#ffffff;">
+                <rect x="0" y="0" width="560" height="160" fill="#ffffff"/>
+                <!-- Axes -->
+                <line x1="50" y1="130" x2="520" y2="130" stroke="#000000" stroke-width="1.5"/>
+                <line x1="50" y1="20" x2="50" y2="130" stroke="#000000" stroke-width="1.5"/>
+                <!-- Grid -->
+                <line x1="50" y1="95" x2="520" y2="95" stroke="#cccccc" stroke-dasharray="2,2"/>
+                <line x1="50" y1="60" x2="520" y2="60" stroke="#cccccc" stroke-dasharray="2,2"/>
+                <!-- Data Series 1: Heavy black line -->
+                <polyline fill="none" stroke="#000000" stroke-width="2.5" points="50,120 120,80 190,95 260,45 330,60 400,30 470,40 520,25"/>
+                <!-- Data Series 2: Dashed gray line -->
+                <polyline fill="none" stroke="#737373" stroke-width="1.8" stroke-dasharray="4,3" points="50,125 120,110 190,105 260,85 330,80 400,65 470,55 520,50"/>
+                <!-- Axis labels -->
+                <text x="50" y="148" font-family="monospace" font-size="10" fill="#000000">T_0</text>
+                <text x="260" y="148" font-family="monospace" font-size="10" fill="#000000">T_MID</text>
+                <text x="505" y="148" font-family="monospace" font-size="10" fill="#000000">T_MAX</text>
+                <text x="18" y="25" font-family="monospace" font-size="9" fill="#000000">Y_MAX</text>
+                <text x="18" y="130" font-family="monospace" font-size="9" fill="#000000">0.0</text>
+              </svg>
+            </div>
+            <div class="viz-footer">
+              <span>Theme: --color-chart-paper (Pure White Paper)</span>
+              <span>High Contrast · No Tinting</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: Mermaid Diagrams -->
+      <section class="page" id="mermaid">
+        <div class="page-inner">
+          <div class="breadcrumb">Visualisations</div>
+          <h1 class="page-title">Rendered Mermaid Diagrams</h1>
+          <p class="page-lead">
+            Container component (<code>.mermaid-frame</code>) styled with pure neutral variables for directed graphs, flowcharts, and sequence pipelines.
+          </p>
+
+          <div class="mermaid-frame">
+            <div class="viz-header">
+              <div class="viz-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                SYS-01 · Local-First Inference Orchestration Pipeline
+              </div>
+              <div class="viz-actions">
+                <span class="badge badge-default">LIVE MERMAID</span>
+              </div>
+            </div>
+            <div class="mermaid-content">
+              <pre class="mermaid">
+graph LR
+    REQ["User Turn Request"] --> DOOR["Choice-Laya Door"]
+    DOOR -->|P_pass >= 0.75| S1["System-1 Edge Slot"]
+    DOOR -->|P_pass < 0.75| S2["System-2 35B Body"]
+    S1 --> HOOK["Zero-Discovery Hook"]
+    S2 --> HOOK
+    HOOK --> COMP["Completion Stream"]
+              </pre>
+            </div>
+            <div class="viz-footer">
+              <span>Engine: Mermaid.js (Client-Side Vector Render)</span>
+              <span>Palette: Pure Grayscale CSS Variables</span>
+            </div>
+          </div>
+
+          <h2>Code Implementation Pattern</h2>
+          <pre><code>&lt;div class="mermaid-frame"&gt;
+  &lt;div class="viz-header"&gt;...&lt;/div&gt;
+  &lt;div class="mermaid-content"&gt;
+    &lt;pre class="mermaid"&gt;
+      graph TD
+        A[Stage 1: Specify] --&gt; B[Stage 2: Analyze]
+        B --&gt; C[Stage 3: Design]
+    &lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- SECTION 9: ASCII Architecture -->
+      <section class="page" id="ascii">
+        <div class="page-inner">
+          <div class="breadcrumb">Visualisations</div>
+          <h1 class="page-title">ASCII &amp; Box-Drawing Architecture</h1>
+          <p class="page-lead">
+            Fixed-width container component (<code>.ascii-frame</code>) preserving monospace alignment, boundary frames, and terminal telemetry layouts.
+          </p>
+
+          <div class="ascii-frame">
+            <div class="viz-header">
+              <div class="viz-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                TOPOLOGY · Dual-Host Inference Allocation Matrix
+              </div>
+              <div class="viz-actions">
+                <span class="badge badge-default">UTF-8 MONO</span>
+              </div>
+            </div>
+            <pre class="ascii-content">
+┌──────────────────────────────────────────────┐          ┌──────────────────────────────────────────┐
+│  PRIMARY HOST (ROG Ally Z1 Extreme)          │          │  SATELLITE PEER (Mac Mini M4)            │
+│  VRAM: 8188 MiB · Single Tenant              │          │  RAM: 16 GiB Unified Memory Pool         │
+├──────────────────────────────────────────────┤          ├──────────────────────────────────────────┤
+│  [SLOT 1] System-2 Body (35B-A3B Q4_K_M)     │   LAN    │  [SLOT 1] Decision Door (Choice-Laya)    │
+│           Allocation: ~7500 MiB VRAM         │ ◄──────► │           Latency: 20-38 ms · 0 MiB VRAM │
+│  [SLOT 2] Hot-Swap Manager (llama-swap)      │  TCP     │  [SLOT 2] Embedding Store (bge-large)    │
+│           Lease Budget: 4.4 - 6.3 GiB        │          │           Latency: 33.8-54.8 ms          │
+│  [SLOT 3] Free Headroom: 208 MiB (2.4%)      │          │  [SLOT 3] Fast Generator (LFM2.5-2.6B)   │
+└──────────────────────────────────────────────┘          └──────────────────────────────────────────┘
+                       │                                                       │
+                       ▼                                                       ▼
+      ┌─────────────────────────────────┐                    ┌─────────────────────────────────┐
+      │  Fast-Path Execution (On-Card)  │                    │  Offloaded Tail Fallback        │
+      └─────────────────────────────────┘                    └─────────────────────────────────┘
+            </pre>
+            <div class="viz-footer">
+              <span>Standard: Unicode Box-Drawing (U+2500 - U+257F)</span>
+              <span>Zero Reflow · Monospace Preserved</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: Surfaces -->
       <section class="page" id="surfaces">
         <div class="page-inner">
           <div class="breadcrumb">Structures</div>
@@ -419,7 +579,7 @@
         </div>
       </section>
 
-      <!-- SECTION 8: Tables -->
+      <!-- SECTION 11: Tables -->
       <section class="page" id="tables">
         <div class="page-inner">
           <div class="breadcrumb">Structures</div>
@@ -446,21 +606,21 @@
                   <td><span class="badge badge-default">READY</span></td>
                 </tr>
                 <tr>
-                  <td>Scroll-spy Engine</td>
-                  <td>Interaction</td>
-                  <td><code>IntersectionObserver</code></td>
+                  <td>Matplotlib Frame</td>
+                  <td>Visualisation</td>
+                  <td><code>.viz-frame</code></td>
                   <td><span class="badge badge-default">READY</span></td>
                 </tr>
                 <tr>
-                  <td>Button Primitive</td>
-                  <td>Action</td>
-                  <td><code>.btn</code></td>
+                  <td>Mermaid Diagram Frame</td>
+                  <td>Visualisation</td>
+                  <td><code>.mermaid-frame</code></td>
                   <td><span class="badge badge-default">READY</span></td>
                 </tr>
                 <tr>
-                  <td>Data Table Wrap</td>
-                  <td>Structure</td>
-                  <td><code>.table-wrap</code></td>
+                  <td>ASCII Box Frame</td>
+                  <td>Visualisation</td>
+                  <td><code>.ascii-frame</code></td>
                   <td><span class="badge badge-default">READY</span></td>
                 </tr>
               </tbody>
@@ -469,7 +629,7 @@
         </div>
       </section>
 
-      <!-- SECTION 9: Forms -->
+      <!-- SECTION 12: Forms -->
       <section class="page" id="forms">
         <div class="page-inner">
           <div class="breadcrumb">Structures</div>
