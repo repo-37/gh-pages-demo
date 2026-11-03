@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GH Pages Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Mobile top bar ───────────────────────────────────────── -->
+  <header class="topbar">
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="topbar-title">GH Pages Demo</span>
+  </header>
+
+  <!-- ── Overlay (mobile) ─────────────────────────────────────── -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ── Shell ────────────────────────────────────────────────── -->
+  <div class="shell">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14
+                           18.18 21.02 12 17.77 5.82 21.02
+                           7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+        <span>Demo Site</span>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-group-label">Getting started</div>
+        <a class="nav-link active" href="#introduction" data-target="introduction">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Introduction
+        </a>
+        <a class="nav-link" href="#installation" data-target="installation">
+          <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          Installation
+        </a>
+        <a class="nav-link" href="#configuration" data-target="configuration">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          Configuration
+        </a>
+
+        <div class="nav-group-label">Core concepts</div>
+        <a class="nav-link" href="#layout" data-target="layout">
+          <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Layout
+        </a>
+        <a class="nav-link" href="#navigation" data-target="navigation">
+          <svg class="nav-icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          Navigation
+        </a>
+        <a class="nav-link" href="#scrolling" data-target="scrolling">
+          <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          Scrolling
+        </a>
+
+        <div class="nav-group-label">Reference</div>
+        <a class="nav-link" href="#components" data-target="components">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Components
+        </a>
+        <a class="nav-link" href="#deployment" data-target="deployment">
+          <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+          Deployment
+        </a>
+        <a class="nav-link" href="#faq" data-target="faq">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          FAQ
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="https://github.com/repo-37/gh-pages-demo" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483
+                     0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466
+                     -.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832
+                     .092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688
+                     -.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844
+                     c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651
+                     .64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855
+                     0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017
+                     C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="content" id="content">
+
+      <section class="page" id="introduction">
+        <div class="page-inner">
+          <div class="breadcrumb">Getting started</div>
+          <h1 class="page-title">Introduction</h1>
+          <p class="page-lead">
+            A minimal, dependency-free scaffold for GitHub Pages sites. Fixed sidebar,
+            scrollable content, smooth scroll-spy — all in plain HTML, CSS, and vanilla JS.
+          </p>
+          <div class="callout callout-info">
+            <strong>Zero build step.</strong> Drop the three files into any repo,
+            enable Pages from <code>main /</code>, and you're live.
+          </div>
+          <h2>What's included</h2>
+          <ul>
+            <li>Fixed sidebar with grouped navigation and scroll-spy active state</li>
+            <li>Full-height scrollable main area — each <code>&lt;section&gt;</code> is a page</li>
+            <li>Mobile hamburger menu with overlay dismiss</li>
+            <li>Dark-mode by default, system preference respected</li>
+            <li>No frameworks, no bundler, no dependencies</li>
+          </ul>
+          <h2>File structure</h2>
+          <pre><code>gh-pages-demo/
+├── index.html   ← markup and sections
+├── style.css    ← layout, tokens, components
+└── app.js       ← scroll-spy + mobile nav</code></pre>
+        </div>
+      </section>
+
+      <section class="page" id="installation">
+        <div class="page-inner">
+          <div class="breadcrumb">Getting started</div>
+          <h1 class="page-title">Installation</h1>
+          <p class="page-lead">Clone the repo or copy the three files into an existing project.</p>
+          <h2>Clone</h2>
+          <pre><code>git clone https://github.com/repo-37/gh-pages-demo.git
+cd gh-pages-demo</code></pre>
+          <h2>Or copy manually</h2>
+          <ol>
+            <li>Copy <code>index.html</code>, <code>style.css</code>, and <code>app.js</code> into your project root.</li>
+            <li>Add your content as <code>&lt;section class="page" id="your-slug"&gt;</code> blocks inside <code>.content</code>.</li>
+            <li>Add a matching <code>&lt;a class="nav-link" href="#your-slug" data-target="your-slug"&gt;</code> in the sidebar.</li>
+            <li>Push and enable GitHub Pages.</li>
+          </ol>
+          <div class="callout callout-tip">
+            <strong>Tip.</strong> The scroll-spy and active class are driven entirely by
+            <code>IntersectionObserver</code> — no manual index needed.
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="configuration">
+        <div class="page-inner">
+          <div class="breadcrumb">Getting started</div>
+          <h1 class="page-title">Configuration</h1>
+          <p class="page-lead">Everything configurable lives in CSS custom properties at the top of <code>style.css</code>.</p>
+          <h2>Design tokens</h2>
+          <pre><code>:root {
+  --sidebar-w:   260px;   /* sidebar width */
+  --topbar-h:    52px;    /* mobile top bar height */
+  --accent:      #4f8ef7; /* link / active colour */
+  --bg:          #0d0f14; /* page background */
+  --surface:     #13161e; /* sidebar / card background */
+  --border:      #252a38; /* divider colour */
+  --text:        #c9d1e0; /* body text */
+  --muted:       #5a6380; /* secondary text */
+  --radius:      8px;     /* border radius */
+  --font-sans:   system-ui, sans-serif;
+  --font-mono:   ui-monospace, monospace;
+}</code></pre>
+          <h2>Breakpoint</h2>
+          <p>
+            Below <code>768px</code> the sidebar collapses off-canvas.
+            The hamburger button appears in the top bar and toggles <code>.is-open</code>
+            on <code>#sidebar</code>. The overlay closes it on tap.
+          </p>
+        </div>
+      </section>
+
+      <section class="page" id="layout">
+        <div class="page-inner">
+          <div class="breadcrumb">Core concepts</div>
+          <h1 class="page-title">Layout</h1>
+          <p class="page-lead">
+            The shell is a two-column CSS grid: a fixed-width sidebar column and a
+            <code>1fr</code> content column, both filling <code>100dvh</code>.
+          </p>
+          <h2>Grid</h2>
+          <pre><code>.shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  height: 100dvh;
+  overflow: hidden; /* scroll happens inside .content */
+}</code></pre>
+          <h2>Sidebar</h2>
+          <p>
+            <code>.sidebar</code> is <code>position: sticky; top: 0; height: 100dvh</code>
+            — it never scrolls. The nav inside it scrolls independently if there are
+            more links than the viewport can show.
+          </p>
+          <h2>Content</h2>
+          <p>
+            <code>.content</code> is <code>overflow-y: auto</code>. Each
+            <code>.page</code> section is at least <code>100dvh</code> tall so one
+            section fills the viewport before the next begins.
+          </p>
+          <div class="card-row">
+            <div class="card">
+              <div class="card-label">Sidebar</div>
+              <div class="card-value">Fixed · <code>260px</code></div>
+            </div>
+            <div class="card">
+              <div class="card-label">Content</div>
+              <div class="card-value">Fluid · <code>1fr</code> · scrollable</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Section min-height</div>
+              <div class="card-value"><code>100dvh</code></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="navigation">
+        <div class="page-inner">
+          <div class="breadcrumb">Core concepts</div>
+          <h1 class="page-title">Navigation</h1>
+          <p class="page-lead">
+            The sidebar nav is plain anchor links. Active state is managed by
+            JavaScript, not by the browser's <code>:target</code> selector, so the
+            highlight persists through momentum scroll.
+          </p>
+          <h2>Markup</h2>
+          <pre><code>&lt;a class="nav-link" href="#section-id" data-target="section-id"&gt;
+  &lt;!-- optional svg icon --&gt;
+  Label
+&lt;/a&gt;</code></pre>
+          <h2>Groups</h2>
+          <p>
+            Add a <code>&lt;div class="nav-group-label"&gt;Group name&lt;/div&gt;</code>
+            before any set of links to create a visual section header. No JS needed.
+          </p>
+          <h2>Click behaviour</h2>
+          <p>
+            Clicking a link calls <code>scrollIntoView({ behavior: 'smooth' })</code>
+            on the target section and immediately sets the active class — no wait for
+            the scroll observer to fire.
+          </p>
+        </div>
+      </section>
+
+      <section class="page" id="scrolling">
+        <div class="page-inner">
+          <div class="breadcrumb">Core concepts</div>
+          <h1 class="page-title">Scrolling</h1>
+          <p class="page-lead">
+            Scroll-spy is implemented with a single <code>IntersectionObserver</code>
+            watching all <code>.page</code> sections inside the <code>.content</code> scroller.
+          </p>
+          <h2>Observer config</h2>
+          <pre><code>const observer = new IntersectionObserver(onIntersect, {
+  root: content,       // scroll container, not window
+  rootMargin: '0px',
+  threshold: 0.3,      // section must be 30% visible
+});</code></pre>
+          <h2>Why <code>root: content</code>?</h2>
+          <p>
+            The browser's default <code>IntersectionObserver</code> root is the
+            viewport. Because scroll happens inside <code>.content</code> (not on
+            <code>window</code>), the root must be set to that element or the observer
+            never fires.
+          </p>
+          <h2>Threshold</h2>
+          <p>
+            <code>0.3</code> means a section is "active" once 30% of it is visible.
+            Raise it toward <code>1.0</code> to require the section to be nearly
+            fully in view before the nav updates.
+          </p>
+        </div>
+      </section>
+
+      <section class="page" id="components">
+        <div class="page-inner">
+          <div class="breadcrumb">Reference</div>
+          <h1 class="page-title">Components</h1>
+          <p class="page-lead">A small set of layout primitives included out of the box.</p>
+
+          <h2>Callouts</h2>
+          <div class="callout callout-info">
+            <strong>Info.</strong> Use <code>.callout.callout-info</code> for notes and context.
+          </div>
+          <div class="callout callout-tip">
+            <strong>Tip.</strong> Use <code>.callout.callout-tip</code> for recommendations.
+          </div>
+          <div class="callout callout-warn">
+            <strong>Warning.</strong> Use <code>.callout.callout-warn</code> for caution.
+          </div>
+
+          <h2>Stat cards</h2>
+          <div class="card-row">
+            <div class="card">
+              <div class="card-label">Sections</div>
+              <div class="card-value">8</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Dependencies</div>
+              <div class="card-value">0</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Build step</div>
+              <div class="card-value">None</div>
+            </div>
+          </div>
+
+          <h2>Code block</h2>
+          <pre><code>// Any &lt;pre&gt;&lt;code&gt; block gets styled automatically.
+const answer = 42;</code></pre>
+        </div>
+      </section>
+
+      <section class="page" id="deployment">
+        <div class="page-inner">
+          <div class="breadcrumb">Reference</div>
+          <h1 class="page-title">Deployment</h1>
+          <p class="page-lead">Three commands from a fresh clone to a live GitHub Pages site.</p>
+          <h2>1. Create a public repo</h2>
+          <pre><code>gh repo create gh-pages-demo --public --source=. --remote=origin --push</code></pre>
+          <h2>2. Enable Pages from main /</h2>
+          <pre><code>gh api repos/:owner/gh-pages-demo/pages \
+  --method POST \
+  -f source.branch=main \
+  -f source.path=/</code></pre>
+          <h2>3. Open the live URL</h2>
+          <pre><code>gh browse --repo :owner/gh-pages-demo</code></pre>
+          <div class="callout callout-info">
+            Pages builds take ~30 seconds. The URL follows the pattern
+            <code>https://&lt;owner&gt;.github.io/&lt;repo&gt;/</code>.
+          </div>
+          <h2>Updating</h2>
+          <p>
+            Every push to <code>main</code> triggers a Pages rebuild automatically.
+            No workflow file or Actions config required for a plain static site.
+          </p>
+        </div>
+      </section>
+
+      <section class="page" id="faq">
+        <div class="page-inner">
+          <div class="breadcrumb">Reference</div>
+          <h1 class="page-title">FAQ</h1>
+          <p class="page-lead">Common questions.</p>
+
+          <div class="faq-item">
+            <div class="faq-q">Can I use this with a custom domain?</div>
+            <div class="faq-a">
+              Yes. Add a <code>CNAME</code> file to the repo root containing your domain,
+              then set the DNS records GitHub specifies in Settings → Pages.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Can I add more sections?</div>
+            <div class="faq-a">
+              Add a <code>&lt;section class="page" id="slug"&gt;</code> to <code>index.html</code>
+              and a matching <code>.nav-link</code> in the sidebar. The observer picks it up
+              automatically — no JS changes needed.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Does it work without JavaScript?</div>
+            <div class="faq-a">
+              The layout and content are fully readable. The active nav highlight and mobile
+              menu won't work, but all links still navigate via standard anchor href behaviour.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Can I use light mode?</div>
+            <div class="faq-a">
+              Swap the token values in <code>:root</code> inside <code>style.css</code>, or
+              add a <code>@media (prefers-color-scheme: light)</code> block to override them.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
