@@ -1,10 +1,11 @@
-/* app.js — scroll-spy + mobile nav + light/dark theme toggle
+/* app.js — robust scroll-spy + layout nav + light/dark theme toggle
    ─────────────────────────────────────────────────────────────
    Pure grayscale design system.
    Supports:
    - Light mode (off-white #f0f0f0 canvas, pure white #ffffff cards & sidebar)
    - Dark mode (pure black #000000 canvas, dark #121212 cards & sidebar)
-   - System preference detection and localStorage persistence.
+   - Container-relative offset calculation for fail-safe section scrolling
+   - Scroll-spy active link synchronization across both desktop and mobile
 */
 
 (function () {
@@ -63,8 +64,34 @@
   // ── Active nav link ─────────────────────────────────────────
   function setActive(id) {
     navLinks.forEach(link => {
-      link.classList.toggle('active', link.dataset.target === id);
+      const match = link.dataset.target === id;
+      link.classList.toggle('active', match);
     });
+  }
+
+  // ── Accurate Container-Relative Scroll Calculation ───────────
+  function scrollToSection(targetId, smooth = true) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    setActive(targetId);
+
+    if (window.innerWidth <= 768) {
+      closeSidebar();
+      target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
+    } else {
+      // Calculate position relative to the scroll container (.content)
+      const contentRect = content.getBoundingClientRect();
+      const targetRect  = target.getBoundingClientRect();
+      const targetScrollTop = content.scrollTop + (targetRect.top - contentRect.top);
+
+      content.scrollTo({
+        top: Math.max(0, targetScrollTop),
+        behavior: smooth ? 'smooth' : 'auto',
+      });
+    }
+
+    history.replaceState(null, '', `#${targetId}`);
   }
 
   // ── Scroll-spy via IntersectionObserver ─────────────────────
@@ -82,12 +109,14 @@
             best = entry;
           }
         });
-        if (best) setActive(best.target.id);
+        if (best && best.target.id) {
+          setActive(best.target.id);
+        }
       },
       {
         root: isMobile() ? null : content,
-        rootMargin: '0px',
-        threshold: [0.1, 0.3, 0.5],
+        rootMargin: '-5% 0px -40% 0px',
+        threshold: [0.05, 0.2, 0.4],
       }
     );
   }
@@ -107,27 +136,12 @@
     }
   });
 
-  // ── Nav click: smooth scroll + immediate active state ───────
+  // ── Nav click listener ──────────────────────────────────────
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
-      const targetId = link.dataset.target;
-      const target   = document.getElementById(targetId);
-      if (!target) return;
-
       e.preventDefault();
-      setActive(targetId);
-
-      if (isMobile()) {
-        closeSidebar();
-        target.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        content.scrollTo({
-          top: target.offsetTop,
-          behavior: 'smooth',
-        });
-      }
-
-      history.replaceState(null, '', `#${targetId}`);
+      const targetId = link.dataset.target;
+      scrollToSection(targetId, true);
     });
   });
 
@@ -158,24 +172,13 @@
     if (e.key === 'Escape') closeSidebar();
   });
 
-  // ── Restore scroll position from hash on load ───────────────
+  // ── Restore scroll position on load ─────────────────────────
   window.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash.slice(1);
-    if (hash) {
-      const target = document.getElementById(hash);
-      if (target) {
-        setActive(hash);
-        requestAnimationFrame(() => {
-          if (isMobile()) {
-            target.scrollIntoView();
-          } else {
-            content.scrollTop = target.offsetTop;
-          }
-        });
-      }
-    } else {
-      const first = pages[0];
-      if (first) setActive(first.id);
+    if (hash && document.getElementById(hash)) {
+      setTimeout(() => scrollToSection(hash, false), 50);
+    } else if (pages.length > 0) {
+      setActive(pages[0].id);
     }
   });
 })();
