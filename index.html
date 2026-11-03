@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Component Library · Pure Grayscale Design System</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Native Mermaid.js integration with strict dark/neutral theme variables and responsive scaling -->
+  <!-- Native Mermaid.js integration with wide-screen topology support -->
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     mermaid.initialize({
@@ -78,6 +78,17 @@
         </button>
       </div>
 
+      <!-- Accent Tint Selector Bar -->
+      <div class="accent-picker-bar">
+        <span style="font-size:0.65rem;font-family:var(--font-mono);color:var(--color-text-muted);margin-right:4px;">ACCENT:</span>
+        <div class="accent-dot active" data-accent="neutral" style="background:#ffffff;" title="Monochrome Neutral"></div>
+        <div class="accent-dot" data-accent="cyan" style="background:#06b6d4;" title="Cyan Tint"></div>
+        <div class="accent-dot" data-accent="emerald" style="background:#10b981;" title="Emerald Tint"></div>
+        <div class="accent-dot" data-accent="amber" style="background:#f59e0b;" title="Amber Tint"></div>
+        <div class="accent-dot" data-accent="rose" style="background:#f43f5e;" title="Rose Tint"></div>
+        <div class="accent-dot" data-accent="violet" style="background:#8b5cf6;" title="Violet Tint"></div>
+      </div>
+
       <nav class="nav">
         <div class="nav-group-label">Foundations</div>
         <a class="nav-link active" href="#overview" data-target="overview">
@@ -88,7 +99,7 @@
         <div class="nav-group-label">Primitives</div>
         <a class="nav-link" href="#buttons" data-target="buttons">
           <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/></svg>
-          Buttons &amp; Groups
+          Buttons &amp; Triggers
         </a>
         <a class="nav-link" href="#badges" data-target="badges">
           <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -102,11 +113,15 @@
         <div class="nav-group-label">Structures</div>
         <a class="nav-link" href="#surfaces" data-target="surfaces">
           <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          Cards &amp; Metric Tiles
+          Cards &amp; Opposite Colors
         </a>
         <a class="nav-link" href="#forms" data-target="forms">
           <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
           Inputs, Toggles &amp; Sliders
+        </a>
+        <a class="nav-link" href="#media" data-target="media">
+          <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Media, iFrames &amp; Images
         </a>
         <a class="nav-link" href="#tables" data-target="tables">
           <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18"/></svg>
@@ -120,7 +135,7 @@
         </a>
         <a class="nav-link" href="#mermaid" data-target="mermaid">
           <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-          Mermaid Diagrams
+          Wide Mermaid Topology
         </a>
         <a class="nav-link" href="#ascii" data-target="ascii">
           <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
@@ -176,9 +191,8 @@
           </p>
 
           <div class="callout callout-info">
-            <strong>Strict Monochromatic Rule ($R = G = B).</strong>
-            Every surface, border, and text token is strictly mapped to an un-tinted gray channel.
-            In Light Mode, the overall canvas background is an off-white neutral (<code>#f0f0f0</code>), while cards, tables, and the fixed sidebar are elevated pure white (<code>#ffffff</code>).
+            <strong>Strict Monochromatic Foundation with Saturated Triggers.</strong>
+            Core surfaces and typography respect pure un-tinted neutrals ($R = G = B$). Critical actions (delete, stop, shutdown, warn) and optional accent highlights utilize high-saturation functional triggers for unmistakable contrast.
           </div>
 
           <!-- Foundation Swatches Card -->
@@ -204,8 +218,8 @@
               <div class="swatch-card"><div class="swatch-block" style="background:#f0f0f0"></div><div class="swatch-meta"><div class="swatch-name">gray-95</div><div class="swatch-hex">#f0f0f0</div></div></div>
               <div class="swatch-card"><div class="swatch-block" style="background:#ffffff"></div><div class="swatch-meta"><div class="swatch-name">gray-100</div><div class="swatch-hex">#ffffff</div></div></div>
             </div>
-            <pre style="margin:0;"><code>/* Dark Theme */  --color-surface-page: #000000;  --color-surface-card: #121212;  --color-border: #303030;
-/* Light Theme */ --color-surface-page: #f0f0f0;  --color-surface-card: #ffffff;  --color-border: #cccccc;</code></pre>
+            <pre style="margin:0;"><code>/* Dark Theme */  --color-surface-page: #000000;  --color-surface-card: #121212;  --color-border: #2e2e2e;
+/* Light Theme */ --color-surface-page: #f0f0f0;  --color-surface-card: #ffffff;  --color-border: #d4d4d4;</code></pre>
           </div>
 
           <!-- Foundation Typography Card -->
@@ -225,63 +239,70 @@
         </div>
       </section>
 
-      <!-- SECTION 2: Buttons & Actions (3x Variety) -->
+      <!-- SECTION 2: Buttons & Saturated Triggers -->
       <section class="page" id="buttons">
         <div class="page-inner">
           <div class="breadcrumb">Primitives</div>
-          <h1 class="page-title">Buttons &amp; Actions</h1>
+          <h1 class="page-title">Buttons &amp; Saturated Action Triggers</h1>
           <p class="page-lead">
-            High-contrast monochromatic interactive controls covering 6 button styles, 3 sizing scales, icon triggers, and joined button groups.
+            Includes high-contrast neutral buttons alongside saturated, color-tinted triggers for critical destructive operations (Delete, Shutdown, Terminate Lease) and user-selected accent tints.
           </p>
 
-          <h2>Button Style Variants</h2>
+          <h2>Saturated Destructive &amp; Caution Triggers</h2>
+          <div class="button-row">
+            <button class="btn btn-danger">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Delete Lease
+            </button>
+            <button class="btn btn-danger-outline">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              Shutdown Host
+            </button>
+            <button class="btn btn-warning">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Evict Slot
+            </button>
+            <button class="btn btn-success">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Commit Gate
+            </button>
+          </div>
+
+          <h2>Dynamic Accent-Tinted Buttons (Choose in Sidebar)</h2>
+          <div class="button-row">
+            <button class="btn btn-accent">Solid Accent</button>
+            <button class="btn btn-accent-tint">Soft Tinted Accent</button>
+          </div>
+
+          <h2>Standard Neutral Hierarchy</h2>
           <div class="button-row">
             <button class="btn btn-primary">Primary Solid</button>
             <button class="btn btn-secondary">Secondary Surface</button>
             <button class="btn btn-outline">Outline Stroke</button>
             <button class="btn btn-ghost">Ghost Text</button>
-            <button class="btn btn-disabled" disabled>Disabled State</button>
-          </div>
-
-          <h2>Sizing Scales &amp; Icon Triggers</h2>
-          <div class="button-row">
-            <button class="btn btn-primary btn-sm">Small (btn-sm)</button>
-            <button class="btn btn-secondary">Default Standard</button>
-            <button class="btn btn-primary btn-lg">Large Action (btn-lg)</button>
-            <button class="btn btn-secondary btn-icon" title="Refresh">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-            </button>
-            <button class="btn btn-outline btn-icon" title="Settings">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-            </button>
-          </div>
-
-          <h2>Segmented Button Groups</h2>
-          <div class="button-row">
-            <div class="btn-group">
-              <button class="btn btn-secondary">Day</button>
-              <button class="btn btn-secondary">Week</button>
-              <button class="btn btn-primary">Month</button>
-              <button class="btn btn-secondary">Quarter</button>
-            </div>
-
-            <div class="segmented-control">
-              <button class="segment-btn active">INSPECT</button>
-              <button class="segment-btn">TELEMETRY</button>
-              <button class="segment-btn">CONFIG</button>
-            </div>
+            <button class="btn btn-disabled" disabled>Disabled</button>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 3: Badges & Status (3x Variety) -->
+      <!-- SECTION 3: Badges & Status Indicators -->
       <section class="page" id="badges">
         <div class="page-inner">
           <div class="breadcrumb">Primitives</div>
           <h1 class="page-title">Badges, Tags &amp; Status Indicators</h1>
           <p class="page-lead">
-            Non-chromatic status badges, category tags, counter pills, and live state dots categorized across 6 visual treatments.
+            Non-chromatic badges expressing status and category taxonomy alongside tinted badges for critical alerts.
           </p>
+
+          <h2>Status States with Saturated Triggers</h2>
+          <div class="badge-row">
+            <span class="badge badge-danger">TERMINATED</span>
+            <span class="badge badge-warning">MEMORY CONGESTION</span>
+            <span class="badge badge-success">ALL TESTS PASS</span>
+            <span class="badge badge-solid badge-dot">RUNNING · 176 T/S</span>
+            <span class="badge badge-default badge-dot">COMMITTED</span>
+            <span class="badge badge-subtle badge-dot">STANDBY IDLE</span>
+          </div>
 
           <h2>Badge Styles &amp; Treatments</h2>
           <div class="badge-row">
@@ -291,19 +312,10 @@
             <span class="badge badge-bordered">HIGH CONTRAST</span>
             <span class="badge badge-pill badge-default">ROUNDED PILL</span>
           </div>
-
-          <h2>Status States with Live Dot Indicators</h2>
-          <div class="badge-row">
-            <span class="badge badge-solid badge-dot">RUNNING · 176 T/S</span>
-            <span class="badge badge-default badge-dot">COMMITTED</span>
-            <span class="badge badge-subtle badge-dot">STANDBY IDLE</span>
-            <span class="badge badge-default">QUEUE: #04</span>
-            <span class="badge badge-subtle">ALLOC: 7,500 MiB</span>
-          </div>
         </div>
       </section>
 
-      <!-- SECTION 4: Callouts & Alerts (3x Variety) -->
+      <!-- SECTION 4: Callouts & Alerts -->
       <section class="page" id="callouts">
         <div class="page-inner">
           <div class="breadcrumb">Primitives</div>
@@ -311,6 +323,16 @@
           <p class="page-lead">
             Contextual callout banners differentiated by border stroke density, surface tone, and spatial alignment.
           </p>
+
+          <div class="callout callout-error">
+            <strong>Critical Allocation Fault (callout-error)</strong>
+            Hardware lease eviction triggered. The System-2 body failed to allocate DDR5 expert weights due to concurrent training lease.
+          </div>
+
+          <div class="callout callout-warn">
+            <strong>Headroom Margin Warning (callout-warn)</strong>
+            Free VRAM is below 250 MiB. Context length exceeds 16,384 tokens; extractor will fall back to CPU.
+          </div>
 
           <div class="callout callout-info">
             <strong>Default Information Notice (callout-info)</strong>
@@ -321,86 +343,105 @@
             <strong>Subtle Implementation Detail (callout-subtle)</strong>
             Lower priority technical detail or contextual documentation footnote.
           </div>
-
-          <div class="callout callout-warn">
-            <strong>High-Priority Caution Notice (callout-warn)</strong>
-            Elevated caution boundary using <code>var(--color-surface-hover)</code> background fill and emphasized stroke.
-          </div>
-
-          <div class="callout callout-error">
-            <strong>Critical Blocked Gate (callout-error)</strong>
-            Double-bordered failure alert denoting test gate refusal or parameter saturation violation.
-          </div>
-
-          <div class="callout callout-minimal">
-            <strong>Minimalist Inline Directive:</strong> Simple single-line unobtrusive technical notation for inline reading.
-          </div>
         </div>
       </section>
 
-      <!-- SECTION 5: Cards & Metric Surfaces (3x Variety) -->
+      <!-- SECTION 5: Cards & Opposite Colors -->
       <section class="page" id="surfaces">
         <div class="page-inner">
           <div class="breadcrumb">Structures</div>
-          <h1 class="page-title">Cards &amp; Metric Surfaces</h1>
+          <h1 class="page-title">Cards &amp; Opposite Color Surfaces</h1>
           <p class="page-lead">
-            Spatial containers utilizing subtle boundary lines, elevation steps, and hover micro-interactions.
+            Spatial containers showcasing both standard card elevations and <strong>Opposite Color Cards</strong> that dynamically invert luminance against the active canvas.
           </p>
+
+          <h2>Opposite Color Cards (Inverted Luminance)</h2>
+          <p>
+            In Dark Mode, these render in pure white (<code>#ffffff</code>) with deep black text.
+            In Light Mode, they invert to deep black (<code>#000000</code>) with pure white text.
+          </p>
+          <div class="grid-2">
+            <div class="card card-opposite">
+              <div class="card-header">
+                <span class="card-label">Opposite Color Hero Card</span>
+                <span class="badge badge-bordered">INVERTED</span>
+              </div>
+              <div class="card-value">Autonomous Agent Gate</div>
+              <p style="margin-top:8px;font-size:0.86rem;">
+                Creates maximum focal attraction on key directives. Uses inverted contrast token <code>--color-surface-opposite</code> with matching inverted code chips: <code>GATE_STATUS_PASS</code>.
+              </p>
+            </div>
+
+            <div class="card card-opposite">
+              <div class="card-header">
+                <span class="card-label">Opposite Metric Tile</span>
+                <span class="badge badge-solid">ATTENTION</span>
+              </div>
+              <div class="card-value">0.00 <span style="font-size:0.8rem;font-weight:400;">% ERROR</span></div>
+              <p style="margin-top:8px;font-size:0.86rem;">
+                Deterministic verification pass rate across 200 automated Playwright regression scenarios.
+              </p>
+            </div>
+          </div>
 
           <h2>Standard Metric Grid (grid-3)</h2>
           <div class="grid-3">
             <div class="card">
-              <div class="card-header">
-                <span class="card-label">Peak Throughput</span>
-                <span class="badge badge-subtle">PRIMARY</span>
-              </div>
+              <div class="card-header"><span class="card-label">Peak Throughput</span><span class="badge badge-subtle">PRIMARY</span></div>
               <div class="card-value">33.5 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">tok/s</span></div>
               <div class="card-subtext">35B-A3B Q4_K_M decode rate</div>
             </div>
 
             <div class="card">
-              <div class="card-header">
-                <span class="card-label">Address Latency</span>
-                <span class="badge badge-default">ZERO-DISC</span>
-              </div>
+              <div class="card-header"><span class="card-label">Address Latency</span><span class="badge badge-default">ZERO-DISC</span></div>
               <div class="card-value">5.8 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">µs</span></div>
               <div class="card-subtext">Pre-prompt injection hook cost</div>
             </div>
 
             <div class="card">
-              <div class="card-header">
-                <span class="card-label">Free Headroom</span>
-                <span class="badge badge-subtle">SAFE</span>
-              </div>
+              <div class="card-header"><span class="card-label">Free Headroom</span><span class="badge badge-subtle">SAFE</span></div>
               <div class="card-value">208 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">MiB</span></div>
               <div class="card-subtext">2.4% buffer at 16k context</div>
-            </div>
-          </div>
-
-          <h2>Interactive &amp; Elevated Variants (grid-2)</h2>
-          <div class="grid-2">
-            <div class="card card-interactive">
-              <div class="card-header">
-                <span class="card-label">Interactive Card Variant</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-              </div>
-              <h3 style="margin-top:0;">Hardware Partition Matrix</h3>
-              <p style="font-size:0.82rem;margin-bottom:0;">Clickable container with subtle hover lift and reinforced border highlighting on hover.</p>
-            </div>
-
-            <div class="card card-bordered card-elevated">
-              <div class="card-header">
-                <span class="card-label">Elevated Boundary Variant</span>
-                <span class="badge badge-solid">ELEVATED</span>
-              </div>
-              <h3 style="margin-top:0;">Critical Safety Interlock</h3>
-              <p style="font-size:0.82rem;margin-bottom:0;">Features a prominent 2px perimeter boundary with intensified box-shadow depth.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 6: Inputs, Toggles & Forms (3x Variety) -->
+      <!-- SECTION 6: Media, iFrames & Images -->
+      <section class="page" id="media">
+        <div class="page-inner">
+          <div class="breadcrumb">Structures</div>
+          <h1 class="page-title">Media, iFrames &amp; Figure Images</h1>
+          <p class="page-lead">
+            Components for embedding external interactive previews via sandboxed <code>&lt;iframe&gt;</code> containers and high-resolution JPEG/PNG figure images with captions.
+          </p>
+
+          <h2>Figure Image Container (.media-figure)</h2>
+          <div class="media-figure">
+            <div class="media-header">
+              <span>FIG-03 · High-Density Diagnostic Signal Visualisation (JPEG)</span>
+              <span class="badge badge-subtle">800x450 JPEG</span>
+            </div>
+            <div class="media-body">
+              <img src="sample-figure.jpg" alt="Diagnostic Signal Asset" />
+            </div>
+            <div class="media-caption">
+              Source: <code>sample-figure.jpg</code> · Captures raw hardware signal response curves across DDR5 memory buses.
+            </div>
+          </div>
+
+          <h2>Embedded Sandboxed iFrame (.iframe-container)</h2>
+          <div class="iframe-container">
+            <div class="iframe-header">
+              <span>PREVIEW · Embedded Document Frame</span>
+              <span class="badge badge-default">SECURE SANDBOX</span>
+            </div>
+            <iframe class="iframe-frame" srcdoc="<!DOCTYPE html><html style='background:#121212;color:#e5e5e5;font-family:sans-serif;padding:24px;'><body style='margin:0;'><h3>Embedded Sandbox Frame</h3><p style='color:#aaaaaa;font-size:0.9rem;'>Simulates external web content, sidecar telemetry, or interactive webview dashboards within a responsive boundary frame.</p></body></html>"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: Inputs, Toggles & Forms -->
       <section class="page" id="forms">
         <div class="page-inner">
           <div class="breadcrumb">Structures</div>
@@ -473,7 +514,7 @@
         </div>
       </section>
 
-      <!-- SECTION 7: Data Tables (3x Variety) -->
+      <!-- SECTION 8: Data Tables -->
       <section class="page" id="tables">
         <div class="page-inner">
           <div class="breadcrumb">Structures</div>
@@ -482,7 +523,6 @@
             Information-dense tables covering standard, compact dense, and striped styles with responsive horizontal scrolling.
           </p>
 
-          <h2>Standard Telemetry Table</h2>
           <div class="table-wrap">
             <table class="data-table">
               <thead>
@@ -519,55 +559,10 @@
               </tbody>
             </table>
           </div>
-
-          <h2>Dense Striped Table Variant (.table-dense .table-striped)</h2>
-          <div class="table-wrap">
-            <table class="data-table table-dense table-striped">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Slot Key</th>
-                  <th>Prompt Latency</th>
-                  <th>Decode Rate</th>
-                  <th>State</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>01</td>
-                  <td><code>system1.decider</code></td>
-                  <td>28.4 ms</td>
-                  <td>142 tok/s</td>
-                  <td>RESIDENT</td>
-                </tr>
-                <tr>
-                  <td>02</td>
-                  <td><code>system1.embedder</code></td>
-                  <td>42.1 ms</td>
-                  <td>N/A</td>
-                  <td>OFFLOADED</td>
-                </tr>
-                <tr>
-                  <td>03</td>
-                  <td><code>system2.generator</code></td>
-                  <td>182.0 ms</td>
-                  <td>33.5 tok/s</td>
-                  <td>RESIDENT</td>
-                </tr>
-                <tr>
-                  <td>04</td>
-                  <td><code>system2.extractor</code></td>
-                  <td>94.2 ms</td>
-                  <td>38 tok/s (CPU)</td>
-                  <td>CPU_BOUND</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
       </section>
 
-      <!-- SECTION 8: Matplotlib Chart Wrapper -->
+      <!-- SECTION 9: Matplotlib Chart Wrapper -->
       <section class="page" id="charts">
         <div class="page-inner">
           <div class="breadcrumb">Visualisations</div>
@@ -595,93 +590,66 @@
               <span>Format: vector SVG (150 dpi)</span>
             </div>
           </div>
-
-          <h2>Publication Theme ("Paper" Canvas)</h2>
-          <div class="viz-frame paper-surface">
-            <div class="viz-header">
-              <div class="viz-title">
-                FIG-02 · Publication Paper Canvas (--color-chart-paper)
-              </div>
-              <div class="viz-actions">
-                <span class="badge badge-default">PRINT-SAFE</span>
-              </div>
-            </div>
-            <div class="viz-canvas">
-              <svg width="640" height="170" viewBox="0 0 640 170" style="background:#ffffff;">
-                <rect x="0" y="0" width="640" height="170" fill="#ffffff"/>
-                <line x1="50" y1="135" x2="600" y2="135" stroke="#000000" stroke-width="1.5"/>
-                <line x1="50" y1="20" x2="50" y2="135" stroke="#000000" stroke-width="1.5"/>
-                <line x1="50" y1="95" x2="600" y2="95" stroke="#cccccc" stroke-dasharray="2,2"/>
-                <line x1="50" y1="55" x2="600" y2="55" stroke="#cccccc" stroke-dasharray="2,2"/>
-                <polyline fill="none" stroke="#000000" stroke-width="2.5" points="50,125 120,80 190,95 260,45 330,60 400,30 470,40 550,25 600,20"/>
-                <polyline fill="none" stroke="#737373" stroke-width="1.8" stroke-dasharray="4,3" points="50,130 120,110 190,105 260,85 330,80 400,65 470,55 550,50 600,45"/>
-                <text x="50" y="154" font-family="monospace" font-size="10" fill="#000000">T_0</text>
-                <text x="310" y="154" font-family="monospace" font-size="10" fill="#000000">T_MID</text>
-                <text x="580" y="154" font-family="monospace" font-size="10" fill="#000000">T_MAX</text>
-                <text x="16" y="25" font-family="monospace" font-size="9" fill="#000000">Y_MAX</text>
-                <text x="16" y="135" font-family="monospace" font-size="9" fill="#000000">0.0</text>
-              </svg>
-            </div>
-            <div class="viz-footer">
-              <span>Theme: Pure White Paper (#ffffff)</span>
-              <span>High Contrast · No Tinting</span>
-            </div>
-          </div>
         </div>
       </section>
 
-      <!-- SECTION 9: Large Mermaid Diagrams (Enhanced Size & Clarity) -->
+      <!-- SECTION 10: Wide Mermaid Topology (Horizontal Widescreen Recognition) -->
       <section class="page" id="mermaid">
         <div class="page-inner">
           <div class="breadcrumb">Visualisations</div>
-          <h1 class="page-title">Rendered Mermaid Diagrams</h1>
+          <h1 class="page-title">Wide-Screen Architecture Topology</h1>
           <p class="page-lead">
-            High-legibility container component (<code>.mermaid-frame</code>) styled with custom pure neutral variables. Expanded dimensions ensure complex pipelines and decision matrices are clearly readable without clipping or tiny scaling.
+            Recognizes widescreen screen real estate and the one-page app shell. Uses an expanded left-to-right (<code>LR</code>) topology spanning client inputs, edge filters, card-resident workers, and satellite clusters.
           </p>
 
           <div class="mermaid-frame">
             <div class="viz-header">
               <div class="viz-title">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                SYS-01 · Comprehensive Inference Execution &amp; Allocation Pipeline
+                WIDE-01 · Distributed Fleet Execution Pipeline (Widescreen LR Topology)
               </div>
               <div class="viz-actions">
-                <span class="badge badge-default">FULL-SCALE DIAGRAM</span>
+                <span class="badge badge-default">FULL WIDESCREEN</span>
               </div>
             </div>
             <div class="mermaid-content">
               <pre class="mermaid">
-flowchart TD
-    START["1. Incoming Agentic Prompt"] --> DOOR{"2. Choice-Laya Decision Door"}
-    DOOR -->|Confidence >= 0.75| S1["3. System-1 Edge Route (Fast-Path)"]
-    DOOR -->|Confidence < 0.75| S2["4. System-2 Workhorse (35B-A3B Body)"]
+flowchart LR
+    CLIENT["1. Single-Page App Turn"] --> GATEWAY["2. Local Gateway (:18090)"]
     
-    subgraph EDGE["System-1 Execution Envelope"]
-        S1 --> S1_EXEC["ModernBERT Decisioning (20-38 ms)"]
-        S1_EXEC --> ZERO_HOOK["Instant Recall Hook (5.8 us Address)"]
+    subgraph S1["Stage I: System-1 Low-Latency Filter"]
+        GATEWAY --> DOOR{"Choice-Laya Door"}
+        DOOR -->|Confidence >= 0.75| EDGE["ModernBERT Decider<br/>(20-38 ms · 0 MiB VRAM)"]
+        EDGE --> INSTANT["Instant Recall Hook<br/>(5.8 us Address)"]
     end
 
-    subgraph WORKHORSE["System-2 Allocation Envelope"]
-        S2 --> CHECK_MEM{"VRAM Headroom Check"}
-        CHECK_MEM -->|Headroom >= 208 MiB| RESIDENT["On-Card Decode (33.5 tok/s)"]
-        CHECK_MEM -->|Over-Context Saturation| METAL["Mac Mini M4 Satellite Fallback"]
+    subgraph S2["Stage II: Primary Host (ROG Ally Z1)"]
+        DOOR -->|Confidence < 0.75| MEM_CHECK{"VRAM Ceiling Check<br/>(8,188 MiB Single Tenant)"}
+        MEM_CHECK -->|Headroom >= 208 MiB| BODY["35B-A3B Body<br/>(~7500 MiB · 33.5 tok/s)"]
+        MEM_CHECK -->|Lease Acquired| TRAIN["Training Lease<br/>(4.4 - 6.3 GiB)"]
     end
 
-    ZERO_HOOK --> MERGE["5. Output Stream Synthesizer"]
-    RESIDENT --> MERGE
-    METAL --> MERGE
-    MERGE --> DONE["6. Validated Turn Result"]
+    subgraph MAC["Stage III: Satellite Peer (Mac Mini M4)"]
+        MEM_CHECK -->|Saturation Spillover| SAT_ROUTE["High-Speed LAN Seam"]
+        SAT_ROUTE --> LFM["LFM2.5-2.6B Generator"]
+        SAT_ROUTE --> BGE["BGE-Large Embeddings"]
+    end
+
+    INSTANT --> SYNTH["Output Response Stream"]
+    BODY --> SYNTH
+    LFM --> SYNTH
+    SYNTH --> TERMINAL["Final User Turn Output"]
               </pre>
             </div>
             <div class="viz-footer">
-              <span>Rendering Engine: Mermaid.js v10 (High Resolution Client-Side Vector)</span>
-              <span>Theme: Monochromatic R=G=B Scale</span>
+              <span>Layout: Horizontal Left-to-Right Widescreen Spanning 3 Node Clusters</span>
+              <span>Render: Vector SVG (Max Width 1,240px)</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 10: ASCII Architecture -->
+      <!-- SECTION 11: ASCII Architecture -->
       <section class="page" id="ascii">
         <div class="page-inner">
           <div class="breadcrumb">Visualisations</div>
@@ -725,7 +693,7 @@ flowchart TD
         </div>
       </section>
 
-      <!-- SECTION 11: 9 Diverse Wireframe Layout Demos -->
+      <!-- SECTION 12: 9 Diverse Wireframe Layout Demos -->
       <section class="page" id="wireframes">
         <div class="page-inner">
           <div class="breadcrumb">Layout Archetypes</div>

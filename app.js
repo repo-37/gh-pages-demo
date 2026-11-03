@@ -1,11 +1,11 @@
-/* app.js — robust scroll-spy + layout nav + light/dark theme toggle
+/* app.js — robust scroll-spy + layout nav + light/dark theme toggle + accent picker
    ─────────────────────────────────────────────────────────────
-   Pure grayscale design system.
    Supports:
    - Light mode (off-white #f0f0f0 canvas, pure white #ffffff cards & sidebar)
    - Dark mode (pure black #000000 canvas, dark #121212 cards & sidebar)
+   - Accent color selection (Neutral, Cyan, Emerald, Amber, Rose, Violet)
    - Container-relative offset calculation for fail-safe section scrolling
-   - Scroll-spy active link synchronization across both desktop and mobile
+   - Wide-screen one-page app synchronization
 */
 
 (function () {
@@ -18,6 +18,7 @@
   const navLinks    = document.querySelectorAll('.nav-link[data-target]');
   const pages       = document.querySelectorAll('.page[id]');
   const themeBtns   = document.querySelectorAll('[data-action="toggle-theme"]');
+  const accentDots  = document.querySelectorAll('.accent-dot[data-accent]');
 
   // ── Theme Management ─────────────────────────────────────────
   function getPreferredTheme() {
@@ -61,6 +62,29 @@
     });
   }
 
+  // ── Dynamic Accent Color Picker ──────────────────────────────
+  function setAccent(accent) {
+    if (accent === 'neutral') {
+      document.documentElement.removeAttribute('data-accent');
+      localStorage.removeItem('accent');
+    } else {
+      document.documentElement.setAttribute('data-accent', accent);
+      localStorage.setItem('accent', accent);
+    }
+    accentDots.forEach(dot => {
+      dot.classList.toggle('active', dot.dataset.accent === accent);
+    });
+  }
+
+  const savedAccent = localStorage.getItem('accent') || 'neutral';
+  setAccent(savedAccent);
+
+  accentDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      setAccent(dot.dataset.accent);
+    });
+  });
+
   // ── Active nav link ─────────────────────────────────────────
   function setActive(id) {
     navLinks.forEach(link => {
@@ -80,7 +104,6 @@
       closeSidebar();
       target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
     } else {
-      // Calculate position relative to the scroll container (.content)
       const contentRect = content.getBoundingClientRect();
       const targetRect  = target.getBoundingClientRect();
       const targetScrollTop = content.scrollTop + (targetRect.top - contentRect.top);
