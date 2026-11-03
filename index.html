@@ -34,10 +34,18 @@
 
   <!-- ── Mobile top bar ───────────────────────────────────────── -->
   <header class="topbar">
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
+    <div class="topbar-left">
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <span class="topbar-title">UI Component Library</span>
+    </div>
+    <button class="theme-toggle-btn" data-action="toggle-theme" aria-label="Toggle theme">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+      <span class="theme-btn-label">LIGHT</span>
     </button>
-    <span class="topbar-title">UI Component Library</span>
   </header>
 
   <!-- ── Overlay (mobile) ─────────────────────────────────────── -->
@@ -49,15 +57,23 @@
     <!-- Fixed Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-logo">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round"
-             stroke-linejoin="round">
-          <rect x="3" y="3" width="7" height="7"/>
-          <rect x="14" y="3" width="7" height="7"/>
-          <rect x="14" y="14" width="7" height="7"/>
-          <rect x="3" y="14" width="7" height="7"/>
-        </svg>
-        <span>Design System</span>
+        <div class="sidebar-logo-brand">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>Design System</span>
+        </div>
+        <button class="theme-toggle-btn" data-action="toggle-theme" aria-label="Toggle light or dark theme">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <span class="theme-btn-label">LIGHT</span>
+        </button>
       </div>
 
       <nav class="nav">
@@ -156,18 +172,19 @@
           <h1 class="page-title">Pure Grayscale Component Library</h1>
           <p class="page-lead">
             A production-ready design system implementation based directly on <code>$WIKI/gui/design-system/</code>.
-            Built with strict pure grayscale neutrals (zero chromatic tinting, R===G===B) and high typographic rigor.
+            Built with strict pure grayscale neutrals (zero chromatic tinting, R===G===B) supporting both dark and light modes.
           </p>
 
           <div class="callout callout-info">
-            <strong>Strict Neutrality Constraint.</strong> Every single surface, border, and text token is mapped to an un-tinted gray channel where red, green, and blue values are identical. Blue, zinc, and slate undertones are strictly rejected.
+            <strong>Theme Architecture Specification.</strong>
+            In Light Mode, the overall canvas background is not pure white, but an off-white neutral (<code>#f0f0f0</code>), while cards, tables, and the fixed sidebar are elevated pure white (<code>#ffffff</code>). This preserves spatial depth and container separation without relying on colored shadows or saturation.
           </div>
 
           <h2>Core Principles</h2>
           <ul>
             <li><strong>Content-First Minimalism:</strong> Chrome and decorative framing are reduced to purposeful spatial lines and pure value hierarchy.</li>
-            <li><strong>Strict Value Contrast:</strong> High-density UI requiring clarity across deep dark surfaces (<code>#000000</code> page canvas to <code>#ffffff</code> accents).</li>
-            <li><strong>Publication Paper Surfaces:</strong> Scientific chart surfaces supporting theme-invariant high contrast paper renders.</li>
+            <li><strong>Strict Value Contrast:</strong> High-density UI requiring clarity across both deep dark surfaces and clean light paper surfaces.</li>
+            <li><strong>Theme Toggle:</strong> Built-in toggle supporting OS preferences (<code>prefers-color-scheme</code>) and persistent user choices.</li>
           </ul>
 
           <div class="card-row">
@@ -176,12 +193,12 @@
               <div class="card-value">Monochromatic</div>
             </div>
             <div class="card">
-              <div class="card-label">Tinting</div>
-              <div class="card-value">0% (Pure R=G=B)</div>
+              <div class="card-label">Light Mode BG</div>
+              <div class="card-value">#f0f0f0 (Off-White)</div>
             </div>
             <div class="card">
-              <div class="card-label">Visualisers</div>
-              <div class="card-value">Matplotlib · Mermaid · ASCII</div>
+              <div class="card-label">Cards &amp; Sidebar</div>
+              <div class="card-value">#ffffff (Pure White)</div>
             </div>
           </div>
         </div>
@@ -193,7 +210,7 @@
           <div class="breadcrumb">Foundations</div>
           <h1 class="page-title">Design Tokens &amp; Swatches</h1>
           <p class="page-lead">
-            The canonical scale spans 13 pure grayscale steps from <code>#000000</code> to <code>#ffffff</code>.
+            The canonical scale spans 15 pure grayscale steps from <code>#000000</code> to <code>#ffffff</code>.
           </p>
 
           <div class="swatch-grid">
@@ -275,10 +292,24 @@
               </div>
             </div>
             <div class="swatch-card">
+              <div class="swatch-block" style="background:#d9d9d9"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-85</div>
+                <div class="swatch-hex">#d9d9d9</div>
+              </div>
+            </div>
+            <div class="swatch-card">
               <div class="swatch-block" style="background:#e5e5e5"></div>
               <div class="swatch-meta">
                 <div class="swatch-name">gray-90</div>
                 <div class="swatch-hex">#e5e5e5</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#f0f0f0"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-95</div>
+                <div class="swatch-hex">#f0f0f0</div>
               </div>
             </div>
             <div class="swatch-card">
@@ -290,15 +321,16 @@
             </div>
           </div>
 
-          <h2>Token Mapping Definitions</h2>
-          <pre><code>--color-surface-page:     var(--gray-0);   /* #000000 */
---color-surface-card:     var(--gray-10);  /* #121212 */
---color-surface-hover:    var(--gray-15);  /* #1a1a1a */
---color-border-subtle:    var(--gray-20);  /* #242424 */
---color-border-default:   var(--gray-25);  /* #303030 */
---color-text-primary:     var(--gray-90);  /* #e5e5e5 */
---color-text-secondary:   var(--gray-70);  /* #aaaaaa */
---color-text-muted:       var(--gray-50);  /* #737373 */</code></pre>
+          <h2>Theme Token Mappings</h2>
+          <pre><code>/* Dark Mode (Default) */
+--color-surface-page:       #000000;  /* Pure black canvas */
+--color-surface-card:       #121212;  /* Elevated card surface */
+
+/* Light Mode */
+--color-surface-page:       #f0f0f0;  /* Off-white canvas (not pure white) */
+--color-surface-card:       #ffffff;  /* Pure white cards &amp; sidebar */
+--color-border-subtle:      #d9d9d9;
+--color-border-default:     #cccccc;</code></pre>
         </div>
       </section>
 
@@ -312,9 +344,9 @@
           </p>
 
           <div style="margin: 20px 0; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); padding: 24px; background: var(--color-surface-card);">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--gray-100); margin-bottom: 8px;">Display Title (2rem)</div>
-            <div style="font-size: 1.5rem; font-weight: 600; color: var(--gray-90); margin-bottom: 8px;">Heading 1 (1.5rem)</div>
-            <div style="font-size: 1.15rem; font-weight: 600; color: var(--gray-90); margin-bottom: 8px;">Section Subheading (1.15rem)</div>
+            <div style="font-size: 2rem; font-weight: 700; color: var(--color-text-strong); margin-bottom: 8px;">Display Title (2rem)</div>
+            <div style="font-size: 1.5rem; font-weight: 600; color: var(--color-text-strong); margin-bottom: 8px;">Heading 1 (1.5rem)</div>
+            <div style="font-size: 1.15rem; font-weight: 600; color: var(--color-text-strong); margin-bottom: 8px;">Section Subheading (1.15rem)</div>
             <div style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 8px;">Body text primary regular with comfortable reading line-height (0.95rem).</div>
             <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--color-text-muted);">Monospace Telemetry Code Label [STATUS_OK] (0.75rem)</div>
           </div>
@@ -371,7 +403,7 @@
 
           <div class="callout callout-info">
             <strong>Default Information Notice</strong>
-            Standard announcement callout using high-contrast white border accent to guide attention.
+            Standard announcement callout using high-contrast border accent to guide attention.
           </div>
 
           <div class="callout callout-subtle">
@@ -381,7 +413,7 @@
 
           <div class="callout callout-warn">
             <strong>High-Priority Constraint Notice</strong>
-            Elevated caution boundary using <code>var(--gray-15)</code> background fill and <code>var(--gray-80)</code> stroke.
+            Elevated caution boundary using elevated background fill and emphasized stroke.
           </div>
         </div>
       </section>
@@ -399,7 +431,7 @@
             <div class="viz-header">
               <div class="viz-title">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                FIG-01 · In-Card Telemetry Response Curve (Dark Mode)
+                FIG-01 · In-Card Telemetry Response Curve
               </div>
               <div class="viz-actions">
                 <button class="viz-btn" onclick="window.open('sample-chart.svg')">SVG</button>
@@ -491,21 +523,9 @@ graph LR
             </div>
             <div class="viz-footer">
               <span>Engine: Mermaid.js (Client-Side Vector Render)</span>
-              <span>Palette: Pure Grayscale CSS Variables</span>
+              <span>Palette: Pure Grayscale Theme Variables</span>
             </div>
           </div>
-
-          <h2>Code Implementation Pattern</h2>
-          <pre><code>&lt;div class="mermaid-frame"&gt;
-  &lt;div class="viz-header"&gt;...&lt;/div&gt;
-  &lt;div class="mermaid-content"&gt;
-    &lt;pre class="mermaid"&gt;
-      graph TD
-        A[Stage 1: Specify] --&gt; B[Stage 2: Analyze]
-        B --&gt; C[Stage 3: Design]
-    &lt;/pre&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
         </div>
       </section>
 
@@ -606,6 +626,12 @@ graph LR
                   <td><span class="badge badge-default">READY</span></td>
                 </tr>
                 <tr>
+                  <td>Theme Toggle Engine</td>
+                  <td>Theme</td>
+                  <td><code>[data-theme]</code></td>
+                  <td><span class="badge badge-default">ACTIVE</span></td>
+                </tr>
+                <tr>
                   <td>Matplotlib Frame</td>
                   <td>Visualisation</td>
                   <td><code>.viz-frame</code></td>
@@ -641,7 +667,7 @@ graph LR
           <div class="form-group">
             <label class="form-label" for="sample-input">Repository Access Key</label>
             <input type="text" id="sample-input" class="form-input" placeholder="e.g. repo-37-token" />
-            <span class="form-help">Focus input to view the pure white focus border.</span>
+            <span class="form-help">Focus input to view the high-contrast focus border.</span>
           </div>
 
           <div class="button-row">

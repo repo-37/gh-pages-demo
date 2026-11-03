@@ -8,44 +8,51 @@ Built strictly using **pure grayscales** (zero chromatic tinting, $R = G = B$).
 
 **[repo-37.github.io/gh-pages-demo](https://repo-37.github.io/gh-pages-demo/)**
 
-## Design System Tokens & Rules
+## Theme Architecture & Spatial Rules
 
-- **Zero-Tint Grayscale Scale**: Uses an absolute neutral 13-step scale from `--gray-0` (`#000000`) through `--gray-100` (`#ffffff`). No slate, blue, or zinc color bleed.
-- **Fixed Shell + Scroll-Spy**: Two-column layout with a fixed viewport sidebar on desktop, scrollable content pane, and native `IntersectionObserver` scroll-spy navigation.
+- **Strict Pure Grayscale Scale**: 15-step scale (`--gray-0` `#000000` to `--gray-100` `#ffffff`, $R=G=B$). Absolutely zero chromatic undertones (no blue, zinc, or slate).
+- **Light Mode Hierarchy**:
+  - Overall Page Canvas (`--color-surface-page`): **Off-white** `#f0f0f0` (`var(--gray-95)`) — not pure white.
+  - Sidebar & Cards (`--color-surface-card`): **Pure white** `#ffffff` (`var(--gray-100)`).
+  - Spatial containers and elevated surfaces lift visually off the canvas without artificial color drop-shadows.
+- **Dark Mode Hierarchy**:
+  - Overall Page Canvas: **Pure black** `#000000` (`var(--gray-0)`).
+  - Sidebar & Cards: **Dark gray** `#121212` (`var(--gray-10)`).
+- **Theme Toggle**: In-header and in-sidebar toggle button syncing with `localStorage` and OS preference (`prefers-color-scheme`).
 
 ## Components Included
 
 ### 1. Foundations
-- **Grayscale Token Scale**: Swatches and token definitions for 13 pure neutral steps.
+- **Grayscale Token Scale**: Swatches and token definitions for 15 pure neutral steps.
 - **Typographic Scale**: Hierarchical sans-serif titles and monospace telemetry labels.
 
 ### 2. Primitives
-- **Buttons**: Primary Solid, Secondary Surface, Outline Stroke, and Disabled states.
-- **Badges & Tags**: Status pills and active category indicators mapped to shade contrast.
+- **Buttons**: Primary Solid, Secondary Surface, Outline Stroke, and Disabled states with adaptive contrast inversion.
+- **Badges & Tags**: Status indicators mapped to pure shade contrast hierarchy.
 - **Callouts & Alerts**: Info, subtle technical details, and elevated caution notices.
 
 ### 3. Visualisations
 - **Matplotlib Chart Wrapper (`.viz-frame`)**:
-  - Header actions, dark-mode canvas, publication paper canvas (`.paper-surface`), metadata footer.
+  - Header actions, dark/light adaptive canvas, publication paper canvas (`.paper-surface`), metadata footer.
   - Native Python Matplotlib SVG vector output with pure neutral palettes.
 - **Mermaid Diagrams (`.mermaid-frame`)**:
-  - Client-side rendered Mermaid.js diagrams using custom grayscale themes.
+  - Client-side rendered Mermaid.js diagrams using custom grayscale theme variables.
   - Directional flowcharts, state transitions, and node highlights.
 - **ASCII Architecture (`.ascii-frame`)**:
   - Monospace UTF-8 Unicode box-drawing diagram wrapper (`.ascii-content`) preserving column alignment with zero reflow.
 
 ### 4. Structures
-- **Cards & Metric Surfaces**: Quantitative metric cards with monospace units.
+- **Cards & Metric Surfaces**: Quantitative metric cards with monospace units and subtle elevation.
 - **Data Tables**: Tabular telemetry displays with clean hover feedback.
-- **Form Controls**: Text inputs with high-contrast pure white focus indicators.
+- **Form Controls**: Text inputs with adaptive high-contrast focus rings.
 
 ## Repository Structure
 
 ```
 gh-pages-demo/
 ├── index.html        — Interactive component library showcase
-├── style.css         — Pure grayscale CSS tokens, layout shell, and component primitives
-├── app.js            — Native IntersectionObserver scroll-spy and mobile navigation
+├── style.css         — Pure grayscale CSS tokens, light/dark themes, layout shell, and component primitives
+├── app.js            — Theme manager, native IntersectionObserver scroll-spy, and mobile navigation
 ├── sample-chart.svg  — Pure grayscale vector chart generated via Python/matplotlib
 ├── README.md         — Component system guide
 └── .nojekyll         — Direct GitHub Pages static deployment

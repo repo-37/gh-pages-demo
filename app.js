@@ -1,19 +1,64 @@
-/* app.js — scroll-spy + mobile nav
+/* app.js — scroll-spy + mobile nav + light/dark theme toggle
    ─────────────────────────────────────────────────────────────
-   No dependencies. Works in every modern browser.
-   IntersectionObserver root is .content (the scroll container),
-   not window, because the page body does not scroll on desktop.
+   Pure grayscale design system.
+   Supports:
+   - Light mode (off-white #f0f0f0 canvas, pure white #ffffff cards & sidebar)
+   - Dark mode (pure black #000000 canvas, dark #121212 cards & sidebar)
+   - System preference detection and localStorage persistence.
 */
 
 (function () {
   'use strict';
 
-  const content  = document.getElementById('content');
-  const sidebar  = document.getElementById('sidebar');
-  const menuBtn  = document.getElementById('menuBtn');
-  const overlay  = document.getElementById('overlay');
-  const navLinks = document.querySelectorAll('.nav-link[data-target]');
-  const pages    = document.querySelectorAll('.page[id]');
+  const content     = document.getElementById('content');
+  const sidebar     = document.getElementById('sidebar');
+  const menuBtn     = document.getElementById('menuBtn');
+  const overlay     = document.getElementById('overlay');
+  const navLinks    = document.querySelectorAll('.nav-link[data-target]');
+  const pages       = document.querySelectorAll('.page[id]');
+  const themeBtns   = document.querySelectorAll('[data-action="toggle-theme"]');
+
+  // ── Theme Management ─────────────────────────────────────────
+  function getPreferredTheme() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light' || saved === 'dark') return saved;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
+      ? 'light'
+      : 'dark';
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    themeBtns.forEach(btn => {
+      const label = btn.querySelector('.theme-btn-label');
+      if (label) {
+        label.textContent = theme === 'light' ? 'DARK' : 'LIGHT';
+      }
+    });
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  }
+
+  themeBtns.forEach(btn => {
+    btn.addEventListener('click', toggleTheme);
+  });
+
+  // Apply initial theme immediately
+  applyTheme(getPreferredTheme());
+
+  // Listen for OS theme changes if user hasn't explicitly set preference
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'light' : 'dark');
+      }
+    });
+  }
 
   // ── Active nav link ─────────────────────────────────────────
   function setActive(id) {
@@ -23,15 +68,11 @@
   }
 
   // ── Scroll-spy via IntersectionObserver ─────────────────────
-  // root is the .content element so the observer fires against
-  // the inner scroll viewport, not the window.
   const isMobile = () => window.innerWidth <= 768;
 
   function makeObserver() {
     return new IntersectionObserver(
       entries => {
-        // Pick the entry with the greatest intersection ratio
-        // among those that are currently intersecting.
         let best = null;
         entries.forEach(entry => {
           if (
@@ -54,8 +95,7 @@
   let observer = makeObserver();
   pages.forEach(p => observer.observe(p));
 
-  // Re-initialise the observer if the viewport crosses the
-  // mobile breakpoint (root must change from .content → null).
+  // Re-initialise the observer if the viewport crosses the mobile breakpoint
   let wasDesktop = !isMobile();
   window.addEventListener('resize', () => {
     const isDesktop = !isMobile();
@@ -78,18 +118,15 @@
       setActive(targetId);
 
       if (isMobile()) {
-        // On mobile, body scrolls; use standard scrollIntoView.
         closeSidebar();
         target.scrollIntoView({ behavior: 'smooth' });
       } else {
-        // On desktop, scroll the .content container.
         content.scrollTo({
           top: target.offsetTop,
           behavior: 'smooth',
         });
       }
 
-      // Update the URL hash without triggering a jump.
       history.replaceState(null, '', `#${targetId}`);
     });
   });
@@ -107,13 +144,16 @@
     document.body.style.overflow = '';
   }
 
-  menuBtn.addEventListener('click', () => {
-    sidebar.classList.contains('is-open') ? closeSidebar() : openSidebar();
-  });
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.contains('is-open') ? closeSidebar() : openSidebar();
+    });
+  }
 
-  overlay.addEventListener('click', closeSidebar);
+  if (overlay) {
+    overlay.addEventListener('click', closeSidebar);
+  }
 
-  // Close on Escape
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeSidebar();
   });
@@ -125,7 +165,6 @@
       const target = document.getElementById(hash);
       if (target) {
         setActive(hash);
-        // Defer so the layout has settled.
         requestAnimationFrame(() => {
           if (isMobile()) {
             target.scrollIntoView();
@@ -135,7 +174,6 @@
         });
       }
     } else {
-      // Default to first section.
       const first = pages[0];
       if (first) setActive(first.id);
     }

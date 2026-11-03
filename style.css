@@ -6,13 +6,11 @@
  * Absolutely no tinted grays (no blue, slate, zinc, or warm undertones).
  * ───────────────────────────────────────────────────────────── */
 :root {
-  color-scheme: dark;
-
   /* Dimensions */
   --sidebar-w:  260px;
   --topbar-h:   52px;
 
-  /* Pure Monochromatic Scale (Strict R===G===B) */
+  /* Pure Monochromatic Primitive Scale (Strict R===G===B) */
   --gray-0:     #000000;
   --gray-10:    #121212;
   --gray-15:    #1a1a1a;
@@ -24,34 +22,10 @@
   --gray-60:    #8f8f8f;
   --gray-70:    #aaaaaa;
   --gray-80:    #cccccc;
+  --gray-85:    #d9d9d9;
   --gray-90:    #e5e5e5;
+  --gray-95:    #f0f0f0;
   --gray-100:   #ffffff;
-
-  /* Semantic Token Mappings (pure neutral) */
-  --color-surface-page:       var(--gray-0);
-  --color-surface-card:       var(--gray-10);
-  --color-surface-hover:      var(--gray-15);
-  --color-surface-active:     var(--gray-20);
-  --color-surface-muted:      var(--gray-15);
-  --color-surface-elevated:   var(--gray-20);
-
-  --color-border-subtle:      var(--gray-20);
-  --color-border-default:     var(--gray-25);
-  --color-border-strong:      var(--gray-40);
-
-  --color-text-primary:       var(--gray-90);
-  --color-text-secondary:     var(--gray-70);
-  --color-text-muted:         var(--gray-50);
-  --color-text-disabled:      var(--gray-30);
-
-  /* Contrast & Action (pure neutral grayscale) */
-  --color-accent:             var(--gray-100);
-  --color-accent-dim:         rgba(255, 255, 255, 0.08);
-  --color-accent-border:      rgba(255, 255, 255, 0.2);
-
-  /* Publication & Chart Paper Tokens */
-  --color-chart-paper:        var(--gray-100);
-  --color-chart-paper-border: var(--gray-80);
 
   /* Radius (Rhizome Standard) */
   --radius-sm:  4px;
@@ -62,11 +36,95 @@
   /* Fonts */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* ── Dark Theme (Default) ────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Semantic Token Mappings (Dark: page is #000000, cards are #121212) */
+  --color-surface-page:       var(--gray-0);
+  --color-surface-card:       var(--gray-10);
+  --color-surface-hover:      var(--gray-15);
+  --color-surface-active:     var(--gray-20);
+  --color-surface-muted:      var(--gray-15);
+  --color-surface-elevated:   var(--gray-20);
+  --color-surface-code:       var(--gray-10);
+
+  --color-border-subtle:      var(--gray-20);
+  --color-border-default:     var(--gray-25);
+  --color-border-strong:      var(--gray-40);
+
+  --color-text-primary:       var(--gray-90);
+  --color-text-secondary:     var(--gray-70);
+  --color-text-muted:         var(--gray-50);
+  --color-text-disabled:      var(--gray-30);
+  --color-text-strong:        var(--gray-100);
+
+  /* Contrast & Action */
+  --color-accent:             var(--gray-100);
+  --color-accent-dim:         rgba(255, 255, 255, 0.08);
+  --color-accent-border:      rgba(255, 255, 255, 0.2);
+
+  /* Inverted Action (Buttons) */
+  --color-btn-primary-bg:     var(--gray-100);
+  --color-btn-primary-text:   var(--gray-0);
+
+  /* Publication Paper Canvas */
+  --color-chart-paper:        var(--gray-100);
+  --color-chart-paper-border: var(--gray-80);
 
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Light Theme ───────────────────────────────────────────────
+ * SPECIFICATION:
+ * - Background isn't pure white -> uses subtle off-white #f0f0f0 (pure neutral gray-95)
+ * - Sidebar and cards ARE pure white -> #ffffff (pure neutral gray-100)
+ * ───────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Page is soft neutral off-white (#f0f0f0); Sidebar & Cards are pure white (#ffffff) */
+  --color-surface-page:       var(--gray-95);
+  --color-surface-card:       var(--gray-100);
+  --color-surface-hover:      var(--gray-95);
+  --color-surface-active:     var(--gray-90);
+  --color-surface-muted:      var(--gray-90);
+  --color-surface-elevated:   var(--gray-100);
+  --color-surface-code:       var(--gray-90);
+
+  --color-border-subtle:      var(--gray-85);
+  --color-border-default:     var(--gray-80);
+  --color-border-strong:      var(--gray-60);
+
+  --color-text-primary:       var(--gray-10);
+  --color-text-secondary:     var(--gray-30);
+  --color-text-muted:         var(--gray-50);
+  --color-text-disabled:      var(--gray-70);
+  --color-text-strong:        var(--gray-0);
+
+  /* Contrast & Action */
+  --color-accent:             var(--gray-0);
+  --color-accent-dim:         rgba(0, 0, 0, 0.06);
+  --color-accent-border:      rgba(0, 0, 0, 0.2);
+
+  /* Inverted Action (Buttons) */
+  --color-btn-primary-bg:     var(--gray-0);
+  --color-btn-primary-text:   var(--gray-100);
+
+  /* Publication Paper Canvas */
+  --color-chart-paper:        var(--gray-100);
+  --color-chart-paper-border: var(--gray-80);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
 /* ── Base ────────────────────────────────────────────────────── */
@@ -92,8 +150,8 @@ a {
   transition: text-decoration-color 0.15s ease, color 0.15s ease;
 }
 a:hover {
-  color: var(--gray-100);
-  text-decoration-color: var(--gray-100);
+  color: var(--color-text-strong);
+  text-decoration-color: var(--color-text-strong);
 }
 
 /* ── Mobile top bar ──────────────────────────────────────────── */
@@ -105,16 +163,22 @@ a:hover {
   background: var(--color-surface-card);
   border-bottom: 1px solid var(--color-border-subtle);
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
   padding: 0 16px;
   z-index: 200;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .topbar-title {
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: -0.01em;
-  color: var(--gray-100);
+  color: var(--color-text-strong);
 }
 
 .menu-btn {
@@ -139,7 +203,7 @@ a:hover {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 150;
   backdrop-filter: blur(4px);
 }
@@ -171,19 +235,45 @@ a:hover {
 .sidebar-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 20px;
+  justify-content: space-between;
+  padding: 0 16px 0 20px;
   height: 56px;
   font-weight: 600;
   font-size: 0.88rem;
   letter-spacing: -0.01em;
   border-bottom: 1px solid var(--color-border-subtle);
   flex-shrink: 0;
-  color: var(--gray-100);
+  color: var(--color-text-strong);
+}
+.sidebar-logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .sidebar-logo svg {
-  color: var(--gray-100);
+  color: var(--color-text-strong);
   flex-shrink: 0;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  padding: 4px 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.theme-toggle-btn:hover {
+  background: var(--color-surface-active);
+  color: var(--color-text-strong);
+  border-color: var(--color-border-strong);
 }
 
 /* ── Nav ─────────────────────────────────────────────────────── */
@@ -221,14 +311,14 @@ a:hover {
 }
 .nav-link:hover {
   background: var(--color-surface-hover);
-  color: var(--gray-100);
+  color: var(--color-text-strong);
   text-decoration: none;
 }
 .nav-link.active {
   background: var(--color-accent-dim);
-  color: var(--gray-100);
+  color: var(--color-text-strong);
   font-weight: 500;
-  box-shadow: inset 2px 0 0 var(--gray-100);
+  box-shadow: inset 2px 0 0 var(--color-text-strong);
 }
 
 .nav-icon {
@@ -261,7 +351,7 @@ a:hover {
   transition: color 0.12s;
 }
 .sidebar-footer a:hover {
-  color: var(--gray-100);
+  color: var(--color-text-strong);
   text-decoration: none;
 }
 .sidebar-footer svg { flex-shrink: 0; }
@@ -272,6 +362,7 @@ a:hover {
   height: 100vh;
   height: 100dvh;
   scroll-behavior: smooth;
+  background: var(--color-surface-page);
 }
 .content::-webkit-scrollbar { width: 6px; }
 .content::-webkit-scrollbar-thumb { background: var(--color-border-default); border-radius: 3px; }
@@ -309,7 +400,7 @@ a:hover {
   font-size: 1.85rem;
   font-weight: 700;
   letter-spacing: -0.025em;
-  color: var(--gray-100);
+  color: var(--color-text-strong);
   line-height: 1.2;
   margin-bottom: 12px;
 }
@@ -326,7 +417,7 @@ a:hover {
 .page-inner h2 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--gray-100);
+  color: var(--color-text-strong);
   margin: 36px 0 12px;
   letter-spacing: -0.01em;
 }
@@ -357,11 +448,11 @@ a:hover {
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-sm);
   padding: 1px 5px;
-  color: var(--gray-100);
+  color: var(--color-text-strong);
 }
 
 .page-inner pre {
-  background: var(--gray-10);
+  background: var(--color-surface-code);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-md);
   padding: 16px 18px;
@@ -385,31 +476,31 @@ a:hover {
   line-height: 1.6;
   margin-bottom: 20px;
   border: 1px solid var(--color-border-default);
-  background: var(--gray-10);
+  background: var(--color-surface-card);
   color: var(--color-text-secondary);
 }
 .callout strong {
   display: block;
   margin-bottom: 2px;
-  color: var(--gray-100);
+  color: var(--color-text-strong);
   font-weight: 600;
 }
 .callout code {
   font-family: var(--font-mono);
   font-size: 0.82em;
-  background: var(--gray-15);
+  background: var(--color-surface-hover);
   border: 1px solid var(--color-border-subtle);
 }
 .callout-info {
-  border-left: 3px solid var(--gray-100);
+  border-left: 3px solid var(--color-text-strong);
 }
 .callout-subtle {
-  border-left: 3px solid var(--gray-50);
-  background: var(--gray-10);
+  border-left: 3px solid var(--color-border-strong);
+  background: var(--color-surface-card);
 }
 .callout-warn {
-  border-left: 3px solid var(--gray-80);
-  background: var(--gray-15);
+  border-left: 3px solid var(--color-text-primary);
+  background: var(--color-surface-hover);
 }
 
 /* ── Component Primitives: Cards & Surfaces ─────────────────── */
@@ -424,11 +515,12 @@ a:hover {
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-md);
   padding: 16px 18px;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 }
 .card:hover {
   border-color: var(--color-border-default);
-  background: var(--color-surface-hover);
+  box-shadow: var(--shadow-md);
 }
 .card-label {
   font-size: 0.65rem;
@@ -441,14 +533,14 @@ a:hover {
 .card-value {
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--gray-100);
+  color: var(--color-text-strong);
 }
 .card-value code {
   font-size: 0.85rem;
   background: none;
   border: none;
   padding: 0;
-  color: var(--gray-100);
+  color: var(--color-text-strong);
 }
 
 /* ── Component Primitives: Buttons ───────────────────────────── */
@@ -473,23 +565,22 @@ a:hover {
   transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
 }
 .btn-primary {
-  background: var(--gray-100);
-  color: var(--gray-0);
-  border: 1px solid var(--gray-100);
+  background: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  border: 1px solid var(--color-btn-primary-bg);
 }
 .btn-primary:hover {
-  background: var(--gray-90);
-  color: var(--gray-0);
+  opacity: 0.9;
   text-decoration: none;
 }
 .btn-secondary {
   background: var(--color-surface-hover);
-  color: var(--gray-100);
+  color: var(--color-text-strong);
   border: 1px solid var(--color-border-default);
 }
 .btn-secondary:hover {
   background: var(--color-surface-active);
-  border-color: var(--gray-50);
+  border-color: var(--color-border-strong);
   text-decoration: none;
 }
 .btn-outline {
@@ -499,12 +590,12 @@ a:hover {
 }
 .btn-outline:hover {
   background: var(--color-surface-hover);
-  color: var(--gray-100);
+  color: var(--color-text-strong);
   text-decoration: none;
 }
 .btn-disabled {
-  background: var(--gray-10);
-  color: var(--gray-40);
+  background: var(--color-surface-hover);
+  color: var(--color-text-disabled);
   border: 1px solid var(--color-border-subtle);
   cursor: not-allowed;
 }
@@ -528,9 +619,9 @@ a:hover {
   line-height: 1;
 }
 .badge-default {
-  background: var(--gray-10);
-  border-color: var(--gray-30);
-  color: var(--gray-90);
+  background: var(--color-surface-card);
+  border-color: var(--color-border-default);
+  color: var(--color-text-primary);
 }
 .badge-subtle {
   background: transparent;
@@ -538,9 +629,9 @@ a:hover {
   color: var(--color-text-muted);
 }
 .badge-solid {
-  background: var(--gray-100);
-  border-color: var(--gray-100);
-  color: var(--gray-0);
+  background: var(--color-btn-primary-bg);
+  border-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
   font-weight: 600;
 }
 .badge-dot::before {
@@ -558,6 +649,7 @@ a:hover {
   border-radius: var(--radius-md);
   overflow: hidden;
   margin: 16px 0 24px;
+  box-shadow: var(--shadow-sm);
 }
 .data-table {
   width: 100%;
@@ -566,7 +658,7 @@ a:hover {
   text-align: left;
 }
 .data-table th {
-  background: var(--gray-10);
+  background: var(--color-surface-card);
   padding: 10px 14px;
   font-size: 0.68rem;
   font-family: var(--font-mono);
@@ -577,6 +669,7 @@ a:hover {
 }
 .data-table td {
   padding: 10px 14px;
+  background: var(--color-surface-card);
   border-bottom: 1px solid var(--color-border-subtle);
   color: var(--color-text-secondary);
 }
@@ -585,7 +678,7 @@ a:hover {
 }
 .data-table tr:hover td {
   background: var(--color-surface-hover);
-  color: var(--gray-100);
+  color: var(--color-text-strong);
 }
 
 /* ── Component Primitives: Form Controls ─────────────────────── */
@@ -599,21 +692,21 @@ a:hover {
 .form-label {
   font-size: 0.78rem;
   font-weight: 500;
-  color: var(--gray-90);
+  color: var(--color-text-primary);
 }
 .form-input {
-  background: var(--gray-10);
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-sm);
   padding: 8px 12px;
   font-size: 0.85rem;
-  color: var(--gray-100);
+  color: var(--color-text-strong);
   font-family: var(--font-sans);
   outline: none;
   transition: border-color 0.15s ease;
 }
 .form-input:focus {
-  border-color: var(--gray-100);
+  border-color: var(--color-text-strong);
 }
 .form-help {
   font-size: 0.72rem;
@@ -645,7 +738,7 @@ a:hover {
 .swatch-name {
   font-size: 0.7rem;
   font-weight: 600;
-  color: var(--gray-100);
+  color: var(--color-text-strong);
 }
 .swatch-hex {
   font-size: 0.65rem;
@@ -665,6 +758,7 @@ a:hover {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-sm);
 }
 
 .viz-header {
@@ -673,7 +767,7 @@ a:hover {
   justify-content: space-between;
   padding: 10px 16px;
   border-bottom: 1px solid var(--color-border-subtle);
-  background: var(--gray-15);
+  background: var(--color-surface-hover);
 }
 
 .viz-title {
@@ -681,7 +775,7 @@ a:hover {
   font-weight: 600;
   font-family: var(--font-mono);
   letter-spacing: 0.04em;
-  color: var(--gray-90);
+  color: var(--color-text-strong);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -694,7 +788,7 @@ a:hover {
 }
 
 .viz-btn {
-  background: transparent;
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-sm);
   color: var(--color-text-muted);
@@ -702,11 +796,11 @@ a:hover {
   font-family: var(--font-mono);
   padding: 2px 7px;
   cursor: pointer;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
 }
 .viz-btn:hover {
-  background: var(--color-surface-hover);
-  color: var(--gray-100);
+  background: var(--color-surface-active);
+  color: var(--color-text-strong);
   border-color: var(--color-border-default);
 }
 
@@ -716,7 +810,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gray-10);
+  background: var(--color-surface-card);
 }
 
 /* Publication Paper Variant (Light Chart Paper) */
@@ -735,7 +829,7 @@ a:hover {
 .viz-footer {
   padding: 8px 16px;
   border-top: 1px solid var(--color-border-subtle);
-  background: var(--gray-10);
+  background: var(--color-surface-hover);
   font-size: 0.7rem;
   font-family: var(--font-mono);
   color: var(--color-text-muted);
@@ -746,11 +840,12 @@ a:hover {
 
 /* ASCII & Fixed-Width Architecture Box */
 .ascii-frame {
-  background: var(--gray-10);
+  background: var(--color-surface-card);
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-md);
   margin: 18px 0 28px;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .ascii-content {
@@ -763,7 +858,7 @@ a:hover {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   line-height: 1.45;
-  color: var(--gray-90);
+  color: var(--color-text-primary);
   white-space: pre;
 }
 
@@ -774,6 +869,7 @@ a:hover {
   background: var(--color-surface-card);
   margin: 18px 0 28px;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .mermaid-content {
@@ -781,7 +877,7 @@ a:hover {
   display: flex;
   justify-content: center;
   overflow-x: auto;
-  background: var(--gray-10);
+  background: var(--color-surface-card);
 }
 
 /* Pure grayscale styling for rendered Mermaid SVG elements */
@@ -795,38 +891,31 @@ a:hover {
 .mermaid-content .node circle,
 .mermaid-content .node ellipse,
 .mermaid-content .node polygon {
-  fill: var(--gray-15) !important;
-  stroke: var(--gray-40) !important;
+  fill: var(--color-surface-hover) !important;
+  stroke: var(--color-border-strong) !important;
   stroke-width: 1.5px !important;
 }
 
-.mermaid-content .node.active rect,
-.mermaid-content .node.current rect {
-  fill: var(--gray-25) !important;
-  stroke: var(--gray-100) !important;
-  stroke-width: 2px !important;
-}
-
 .mermaid-content .nodeLabel {
-  color: var(--gray-100) !important;
-  fill: var(--gray-100) !important;
+  color: var(--color-text-strong) !important;
+  fill: var(--color-text-strong) !important;
   font-size: 0.82rem !important;
 }
 
 .mermaid-content .edgePath .path {
-  stroke: var(--gray-50) !important;
+  stroke: var(--color-text-muted) !important;
   stroke-width: 1.5px !important;
 }
 
 .mermaid-content .marker {
-  fill: var(--gray-50) !important;
-  stroke: var(--gray-50) !important;
+  fill: var(--color-text-muted) !important;
+  stroke: var(--color-text-muted) !important;
 }
 
 .mermaid-content .edgeLabel {
-  background-color: var(--gray-10) !important;
-  color: var(--gray-70) !important;
-  fill: var(--gray-70) !important;
+  background-color: var(--color-surface-card) !important;
+  color: var(--color-text-secondary) !important;
+  fill: var(--color-text-secondary) !important;
   font-family: var(--font-mono) !important;
   font-size: 0.72rem !important;
 }
