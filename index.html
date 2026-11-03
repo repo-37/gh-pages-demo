@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Component Library · Pure Grayscale Design System</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Three.js CDN for robust 3D WebGL visualizations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <!-- Native Mermaid.js integration with wide-screen topology support -->
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
@@ -94,6 +96,24 @@
         <a class="nav-link active" href="#overview" data-target="overview">
           <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           Overview &amp; Tokens
+        </a>
+
+        <div class="nav-group-label">AI / Robotics Workspaces</div>
+        <a class="nav-link" href="#workspace-latent" data-target="workspace-latent">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><path d="M10.5 10.5L6.5 17.5M13.5 13.5L17.5 6.5"/></svg>
+          3D Latent Space &amp; Clusters
+        </a>
+        <a class="nav-link" href="#workspace-robotics" data-target="workspace-robotics">
+          <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M7 15h.01M17 15h.01"/></svg>
+          3D Robotics Kinematics &amp; IK
+        </a>
+        <a class="nav-link" href="#workspace-neural" data-target="workspace-neural">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/></svg>
+          Attention Matrix &amp; Heatmaps
+        </a>
+        <a class="nav-link" href="#workspace-telemetry" data-target="workspace-telemetry">
+          <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          3D Loss Surfaces &amp; Telemetry
         </a>
 
         <div class="nav-group-label">Primitives</div>
@@ -918,6 +938,411 @@ flowchart LR
               <div class="wireframe-meta">Terminal pane with breadcrumb bar, scrolling monospace buffer, and bottom command input seam.</div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <!-- 01 · 3D Latent Space & Vector Clusters Workspace         -->
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <section class="page" id="workspace-latent">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-eyebrow">AI / Machine Learning Workspace</span>
+            <h1 class="page-title">3D Latent Space &amp; Vector Clusters</h1>
+            <p class="page-description">
+              Interactive high-dimensional embedding projection (512-D &rarr; 3-D PCA / UMAP / t-SNE) rendered directly in WebGL.
+              Analyze cluster density, centroid distance, and token distribution in real-time within the pure grayscale canvas.
+            </p>
+          </div>
+
+          <!-- Ambient Metric Bar -->
+          <div class="workspace-stat-bar">
+            <div class="stat-item">
+              <span class="stat-label">TOTAL VECTORS</span>
+              <span class="stat-value" id="latent-stat-count">1,024</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">DIMENSIONALITY</span>
+              <span class="stat-value">512-D &rarr; 3-D</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">CLUSTER RADIUS</span>
+              <span class="stat-value" id="latent-stat-radius">42.8 σ</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">SELECTED CLUSTER</span>
+              <span class="stat-value" id="latent-stat-cluster">Centroid α (Semantic Core)</span>
+            </div>
+          </div>
+
+          <!-- 3D Interactive Workbench -->
+          <div class="workspace-3d-layout">
+            <div class="workspace-viewport-card">
+              <div class="workspace-viewport-header">
+                <div class="workspace-viewport-title">
+                  <span class="status-indicator status-live"></span>
+                  <span>WebGL Latent Space Viewport</span>
+                </div>
+                <div class="workspace-viewport-actions">
+                  <button class="btn btn-sm btn-subtle" id="latent-reset-btn">Reset View</button>
+                  <button class="btn btn-sm btn-secondary" id="latent-resample-btn">Resample Clusters</button>
+                </div>
+              </div>
+
+              <!-- Interactive 3D Canvas Container -->
+              <div class="webgl-canvas-container" id="latent-canvas-container">
+                <canvas id="latent-canvas"></canvas>
+                <div class="canvas-overlay-hud">
+                  <div class="hud-tag">CAMERA: ORBIT [CLICK + DRAG]</div>
+                  <div class="hud-tag">ZOOM: SCROLL</div>
+                  <div class="hud-tag">PROJECTION: t-SNE (PERPLEXITY 30)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Inspector Panel -->
+            <div class="workspace-side-panel">
+              <div class="panel-section">
+                <h4 class="panel-heading">Cluster Decomposition</h4>
+                <div class="cluster-legend-list">
+                  <div class="cluster-legend-item active" data-cluster="0">
+                    <span class="legend-dot" style="background:#ffffff;"></span>
+                    <div class="legend-info">
+                      <span class="legend-name">Centroid α · Semantic Core</span>
+                      <span class="legend-meta">420 vectors · 512-D</span>
+                    </div>
+                  </div>
+                  <div class="cluster-legend-item" data-cluster="1">
+                    <span class="legend-dot" style="background:#a3a3a3;"></span>
+                    <div class="legend-info">
+                      <span class="legend-name">Centroid β · Code Synthesis</span>
+                      <span class="legend-meta">314 vectors · 512-D</span>
+                    </div>
+                  </div>
+                  <div class="cluster-legend-item" data-cluster="2">
+                    <span class="legend-dot" style="background:#525252;"></span>
+                    <div class="legend-info">
+                      <span class="legend-name">Centroid γ · Tool Contracts</span>
+                      <span class="legend-meta">290 vectors · 512-D</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-section">
+                <h4 class="panel-heading">Dimensional Controls</h4>
+                <div class="control-group">
+                  <label class="control-label" for="latent-spread-slider">
+                    <span>Manifold Spread</span>
+                    <span class="control-val" id="latent-spread-val">1.0x</span>
+                  </label>
+                  <input type="range" id="latent-spread-slider" min="0.5" max="2.5" step="0.1" value="1.0" class="control-range" />
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="latent-rotation-slider">
+                    <span>Rotation Rate</span>
+                    <span class="control-val" id="latent-rot-val">1.0x</span>
+                  </label>
+                  <input type="range" id="latent-rotation-slider" min="0" max="3" step="0.2" value="1.0" class="control-range" />
+                </div>
+              </div>
+
+              <div class="panel-section">
+                <h4 class="panel-heading">Selected Vector Point</h4>
+                <div class="vector-inspect-box">
+                  <div class="inspect-field"><span>ID:</span> <code>vec_0x7f4a0b2</code></div>
+                  <div class="inspect-field"><span>COSINE DIST:</span> <code>0.0824</code></div>
+                  <div class="inspect-field"><span>SOURCE:</span> <code>rho-agent/core</code></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <!-- 02 · 3D Robotics Kinematics & Inverse Kinematics Workspace-->
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <section class="page" id="workspace-robotics">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-eyebrow">Robotics &amp; Physical AI Workspace</span>
+            <h1 class="page-title">3D Kinematics &amp; Inverse Kinematics (IK)</h1>
+            <p class="page-description">
+              Articulated robotic manipulator simulator with multi-joint forward and inverse kinematics,
+              joint angle telemetry, and trajectory execution in interactive 3D WebGL space.
+            </p>
+          </div>
+
+          <div class="workspace-stat-bar">
+            <div class="stat-item">
+              <span class="stat-label">DEGREES OF FREEDOM</span>
+              <span class="stat-value">6-DOF ARTICULATED</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">END EFFECTOR (X, Y, Z)</span>
+              <span class="stat-value" id="robotics-ee-pos">[12.4, 18.2, 8.5]</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">IK SOLVER STATUS</span>
+              <span class="stat-value badge-status-text">CONVERGED (&lt; 0.001 mm)</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">CONTROL LOOP</span>
+              <span class="stat-value">1,000 Hz RT-PREEMPT</span>
+            </div>
+          </div>
+
+          <div class="workspace-3d-layout">
+            <div class="workspace-viewport-card">
+              <div class="workspace-viewport-header">
+                <div class="workspace-viewport-title">
+                  <span class="status-indicator status-live"></span>
+                  <span>Robotics 3D Articulated Simulation</span>
+                </div>
+                <div class="workspace-viewport-actions">
+                  <button class="btn btn-sm btn-subtle" id="arm-home-btn">Home Arm</button>
+                  <button class="btn btn-sm btn-secondary" id="arm-wave-btn">Run Trajectory</button>
+                </div>
+              </div>
+
+              <div class="webgl-canvas-container" id="robotics-canvas-container">
+                <canvas id="robotics-canvas"></canvas>
+                <div class="canvas-overlay-hud">
+                  <div class="hud-tag">INTERACT: ROTATE SCENE [DRAG]</div>
+                  <div class="hud-tag">TARGET: DRIFT SPHERE</div>
+                  <div class="hud-tag">SOLVER: DAMPED LEAST SQUARES</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Robotics Joint Sliders Panel -->
+            <div class="workspace-side-panel">
+              <div class="panel-section">
+                <h4 class="panel-heading">Joint Servo Angles (rad / deg)</h4>
+                <div class="control-group">
+                  <label class="control-label" for="joint1-slider">
+                    <span>Joint 1 (Base Yaw)</span>
+                    <span class="control-val" id="joint1-val">0°</span>
+                  </label>
+                  <input type="range" id="joint1-slider" min="-180" max="180" step="1" value="0" class="control-range" />
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="joint2-slider">
+                    <span>Joint 2 (Shoulder Pitch)</span>
+                    <span class="control-val" id="joint2-val">45°</span>
+                  </label>
+                  <input type="range" id="joint2-slider" min="-90" max="90" step="1" value="45" class="control-range" />
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="joint3-slider">
+                    <span>Joint 3 (Elbow Pitch)</span>
+                    <span class="control-val" id="joint3-val">-45°</span>
+                  </label>
+                  <input type="range" id="joint3-slider" min="-135" max="135" step="1" value="-45" class="control-range" />
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="joint4-slider">
+                    <span>Joint 4 (Wrist Yaw)</span>
+                    <span class="control-val" id="joint4-val">30°</span>
+                  </label>
+                  <input type="range" id="joint4-slider" min="-180" max="180" step="1" value="30" class="control-range" />
+                </div>
+              </div>
+
+              <div class="panel-section">
+                <h4 class="panel-heading">Kinematic Bounds</h4>
+                <div class="vector-inspect-box">
+                  <div class="inspect-field"><span>REACH RADIUS:</span> <code>0.85 m</code></div>
+                  <div class="inspect-field"><span>PAYLOAD:</span> <code>3.50 kg</code></div>
+                  <div class="inspect-field"><span>SINGULARITY:</span> <code>CLEAR (&gt; 0.15)</code></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <!-- 03 · Attention Matrix & Token Heatmaps Workspace           -->
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <section class="page" id="workspace-neural">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-eyebrow">Transformer Architecture Deep Dive</span>
+            <h1 class="page-title">Attention Matrix &amp; Token Heatmaps</h1>
+            <p class="page-description">
+              Interactive multi-head self-attention inspector for sequence models. Observe QK-product weightings,
+              token causal masks, and per-head attention entropy across multi-layer transformers.
+            </p>
+          </div>
+
+          <div class="workspace-stat-bar">
+            <div class="stat-item">
+              <span class="stat-label">TRANSFORMER MODEL</span>
+              <span class="stat-value">LFM-2.5 32-HEAD</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">SELECTED HEAD</span>
+              <span class="stat-value" id="attn-stat-head">Head #07 (Induction Head)</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">SEQUENCE LENGTH</span>
+              <span class="stat-value">16 Tokens</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">HEAD ENTROPY</span>
+              <span class="stat-value" id="attn-stat-entropy">1.412 bits</span>
+            </div>
+          </div>
+
+          <div class="workspace-grid-split">
+            <!-- Heatmap Matrix Card -->
+            <div class="card" style="padding: 24px; overflow-x: auto;">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Token Attention Weights Heatmap (Q × Kᵀ / √d)</h3>
+                  <div class="card-subtitle">Values normalized with softmax; hover any cell for exact weight</div>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-sm btn-secondary" id="btn-head-prev">&larr; Prev Head</button>
+                  <button class="btn btn-sm btn-secondary" id="btn-head-next">Next Head &rarr;</button>
+                </div>
+              </div>
+
+              <!-- Interactive Matrix Grid Table -->
+              <div class="attention-matrix-wrapper">
+                <div class="matrix-tokens-x" id="matrix-tokens-x"></div>
+                <div class="matrix-body-row">
+                  <div class="matrix-tokens-y" id="matrix-tokens-y"></div>
+                  <div class="matrix-cells-grid" id="matrix-cells-grid"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Side Inspector -->
+            <div class="workspace-side-panel">
+              <div class="panel-section">
+                <h4 class="panel-heading">Transformer Layer &amp; Head</h4>
+                <div class="control-group">
+                  <label class="control-label" for="attn-layer-select">Layer Index</label>
+                  <select id="attn-layer-select" class="form-input">
+                    <option value="0">Layer 00 · Lexical &amp; Positional</option>
+                    <option value="12" selected>Layer 12 · Intermediate Reasoning</option>
+                    <option value="23">Layer 23 · Final Output Synthesis</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="attn-head-select">Attention Head</label>
+                  <select id="attn-head-select" class="form-input">
+                    <option value="0">Head 00 · Previous Token</option>
+                    <option value="7" selected>Head 07 · Induction Seam</option>
+                    <option value="14">Head 14 · Semantic Coreference</option>
+                    <option value="28">Head 28 · Syntax Parser</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="panel-section">
+                <h4 class="panel-heading">Active Cell Inspection</h4>
+                <div class="vector-inspect-box">
+                  <div class="inspect-field"><span>QUERY TOKEN:</span> <code id="inspect-q-token">"reasoning"</code></div>
+                  <div class="inspect-field"><span>KEY TOKEN:</span> <code id="inspect-k-token">"architecture"</code></div>
+                  <div class="inspect-field"><span>SOFTMAX WEIGHT:</span> <code id="inspect-weight">0.8412</code></div>
+                  <div class="inspect-field"><span>GRADIENT NORM:</span> <code>0.0231</code></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <!-- 04 · Loss Surfaces & Live Training Telemetry               -->
+      <!-- ══════════════════════════════════════════════════════════ -->
+      <section class="page" id="workspace-telemetry">
+        <div class="page-inner">
+          <div class="page-header">
+            <span class="page-eyebrow">Optimization &amp; Training Dynamics</span>
+            <h1 class="page-title">3D Loss Landscapes &amp; Real-time Telemetry</h1>
+            <p class="page-description">
+              Visualize non-convex loss surfaces, gradient descent saddle points, and multi-node cluster training curves.
+              Explore how learning rate schedules navigate complex local minima in 3D wireframe space.
+            </p>
+          </div>
+
+          <div class="workspace-stat-bar">
+            <div class="stat-item">
+              <span class="stat-label">GLOBAL STEP</span>
+              <span class="stat-value" id="train-stat-step">124,500</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">LOSS VAL (CROSS-ENTROPY)</span>
+              <span class="stat-value" id="train-stat-loss">0.2418</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">PERPLEXITY</span>
+              <span class="stat-value">1.273</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">OPTIMIZER</span>
+              <span class="stat-value">AdamW (β₁=0.9, β₂=0.95)</span>
+            </div>
+          </div>
+
+          <div class="workspace-3d-layout">
+            <div class="workspace-viewport-card">
+              <div class="workspace-viewport-header">
+                <div class="workspace-viewport-title">
+                  <span class="status-indicator status-live"></span>
+                  <span>Non-Convex 3D Loss Surface &amp; Optimization Trajectory</span>
+                </div>
+                <div class="workspace-viewport-actions">
+                  <button class="btn btn-sm btn-subtle" id="surface-reset-btn">Reset Landscape</button>
+                  <button class="btn btn-sm btn-secondary" id="surface-step-btn">Simulate Descent Step</button>
+                </div>
+              </div>
+
+              <div class="webgl-canvas-container" id="surface-canvas-container">
+                <canvas id="surface-canvas"></canvas>
+                <div class="canvas-overlay-hud">
+                  <div class="hud-tag">SURFACE: BEALE &amp; RASTRIGIN HYBRID</div>
+                  <div class="hud-tag">BALL: CURRENT WEIGHT VECTOR θ</div>
+                  <div class="hud-tag">GRADIENT: −∇L(θ)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Optimization Telemetry Feed -->
+            <div class="workspace-side-panel">
+              <div class="panel-section">
+                <h4 class="panel-heading">Descent Parameters</h4>
+                <div class="control-group">
+                  <label class="control-label" for="lr-slider">
+                    <span>Learning Rate (η)</span>
+                    <span class="control-val" id="lr-val">3e-4</span>
+                  </label>
+                  <input type="range" id="lr-slider" min="1" max="10" step="1" value="3" class="control-range" />
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="momentum-slider">
+                    <span>Momentum (β)</span>
+                    <span class="control-val" id="momentum-val">0.90</span>
+                  </label>
+                  <input type="range" id="momentum-slider" min="0.5" max="0.99" step="0.05" value="0.90" class="control-range" />
+                </div>
+              </div>
+
+              <div class="panel-section">
+                <h4 class="panel-heading">Live Telemetry Stream</h4>
+                <div class="vector-inspect-box">
+                  <div class="inspect-field"><span>GPU THROUGHPUT:</span> <code>14,200 tok/s</code></div>
+                  <div class="inspect-field"><span>VRAM FOOTPRINT:</span> <code>21.4 GB / 24 GB</code></div>
+                  <div class="inspect-field"><span>GRAD NORM CLIP:</span> <code>0.48 (under 1.0)</code></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
