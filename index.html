@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GH Pages Demo</title>
+  <title>Component Library · Pure Grayscale Design System</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,7 +13,7 @@
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
-    <span class="topbar-title">GH Pages Demo</span>
+    <span class="topbar-title">UI Component Library</span>
   </header>
 
   <!-- ── Overlay (mobile) ─────────────────────────────────────── -->
@@ -22,60 +22,61 @@
   <!-- ── Shell ────────────────────────────────────────────────── -->
   <div class="shell">
 
-    <!-- Sidebar -->
+    <!-- Fixed Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-logo">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2" stroke-linecap="round"
              stroke-linejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14
-                           18.18 21.02 12 17.77 5.82 21.02
-                           7 14.14 2 9.27 8.91 8.26 12 2"/>
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
         </svg>
-        <span>Demo Site</span>
+        <span>Design System</span>
       </div>
 
       <nav class="nav">
-        <div class="nav-group-label">Getting started</div>
-        <a class="nav-link active" href="#introduction" data-target="introduction">
-          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          Introduction
+        <div class="nav-group-label">Foundations</div>
+        <a class="nav-link active" href="#overview" data-target="overview">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Overview
         </a>
-        <a class="nav-link" href="#installation" data-target="installation">
-          <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-          Installation
-        </a>
-        <a class="nav-link" href="#configuration" data-target="configuration">
+        <a class="nav-link" href="#tokens" data-target="tokens">
           <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-          Configuration
+          Grayscale Tokens
+        </a>
+        <a class="nav-link" href="#typography" data-target="typography">
+          <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          Typography
         </a>
 
-        <div class="nav-group-label">Core concepts</div>
-        <a class="nav-link" href="#layout" data-target="layout">
+        <div class="nav-group-label">Primitives</div>
+        <a class="nav-link" href="#buttons" data-target="buttons">
+          <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/></svg>
+          Buttons
+        </a>
+        <a class="nav-link" href="#badges" data-target="badges">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Badges &amp; Tags
+        </a>
+        <a class="nav-link" href="#callouts" data-target="callouts">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Callouts &amp; Alerts
+        </a>
+
+        <div class="nav-group-label">Structures</div>
+        <a class="nav-link" href="#surfaces" data-target="surfaces">
           <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          Layout
+          Cards &amp; Surfaces
         </a>
-        <a class="nav-link" href="#navigation" data-target="navigation">
-          <svg class="nav-icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          Navigation
+        <a class="nav-link" href="#tables" data-target="tables">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18"/></svg>
+          Data Tables
         </a>
-        <a class="nav-link" href="#scrolling" data-target="scrolling">
-          <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-          Scrolling
-        </a>
-
-        <div class="nav-group-label">Reference</div>
-        <a class="nav-link" href="#components" data-target="components">
-          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          Components
-        </a>
-        <a class="nav-link" href="#deployment" data-target="deployment">
-          <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
-          Deployment
-        </a>
-        <a class="nav-link" href="#faq" data-target="faq">
-          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          FAQ
+        <a class="nav-link" href="#forms" data-target="forms">
+          <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+          Inputs &amp; Forms
         </a>
       </nav>
 
@@ -92,7 +93,7 @@
                      0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017
                      C22 6.484 17.522 2 12 2z"/>
           </svg>
-          View on GitHub
+          GitHub Repository
         </a>
         <a href="https://github.com/repo-37/gh-pages-demo/blob/main/README.md" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -102,293 +103,390 @@
             <line x1="16" y1="17" x2="8" y2="17"/>
             <polyline points="10 9 9 9 8 9"/>
           </svg>
-          README
+          README.md
         </a>
       </div>
     </aside>
 
-    <!-- Main content -->
+    <!-- Main Scrollable Content -->
     <main class="content" id="content">
 
-      <section class="page" id="introduction">
+      <!-- SECTION 1: Overview -->
+      <section class="page" id="overview">
         <div class="page-inner">
-          <div class="breadcrumb">Getting started</div>
-          <h1 class="page-title">Introduction</h1>
+          <div class="breadcrumb">Foundations</div>
+          <h1 class="page-title">Pure Grayscale Component Library</h1>
           <p class="page-lead">
-            A minimal, dependency-free scaffold for GitHub Pages sites. Fixed sidebar,
-            scrollable content, smooth scroll-spy — all in plain HTML, CSS, and vanilla JS.
+            A production-ready design system implementation based directly on <code>$WIKI/gui/design-system/</code>.
+            Built with strict pure grayscale neutrals (zero chromatic tinting, R===G===B) and high typographic rigor.
           </p>
+
           <div class="callout callout-info">
-            <strong>Zero build step.</strong> Drop the three files into any repo,
-            enable Pages from <code>main /</code>, and you're live.
+            <strong>Strict Neutrality Constraint.</strong> Every single surface, border, and text token is mapped to an un-tinted gray channel where red, green, and blue values are identical. Blue, zinc, and slate undertones are strictly rejected.
           </div>
-          <h2>What's included</h2>
+
+          <h2>Core Principles</h2>
           <ul>
-            <li>Fixed sidebar with grouped navigation and scroll-spy active state</li>
-            <li>Full-height scrollable main area — each <code>&lt;section&gt;</code> is a page</li>
-            <li>Mobile hamburger menu with overlay dismiss</li>
-            <li>Dark-mode by default, system preference respected</li>
-            <li>No frameworks, no bundler, no dependencies</li>
+            <li><strong>Content-First Minimalism:</strong> Chrome and decorative framing are reduced to purposeful spatial lines and pure value hierarchy.</li>
+            <li><strong>Strict Value Contrast:</strong> High-density UI requiring clarity across deep dark surfaces (<code>#000000</code> page canvas to <code>#ffffff</code> accents).</li>
+            <li><strong>Zero Dependencies:</strong> 100% vanilla CSS custom properties and lightweight native DOM scripting.</li>
           </ul>
-          <h2>File structure</h2>
-          <pre><code>gh-pages-demo/
-├── index.html   ← markup and sections
-├── style.css    ← layout, tokens, components
-└── app.js       ← scroll-spy + mobile nav</code></pre>
-        </div>
-      </section>
 
-      <section class="page" id="installation">
-        <div class="page-inner">
-          <div class="breadcrumb">Getting started</div>
-          <h1 class="page-title">Installation</h1>
-          <p class="page-lead">Clone the repo or copy the three files into an existing project.</p>
-          <h2>Clone</h2>
-          <pre><code>git clone https://github.com/repo-37/gh-pages-demo.git
-cd gh-pages-demo</code></pre>
-          <h2>Or copy manually</h2>
-          <ol>
-            <li>Copy <code>index.html</code>, <code>style.css</code>, and <code>app.js</code> into your project root.</li>
-            <li>Add your content as <code>&lt;section class="page" id="your-slug"&gt;</code> blocks inside <code>.content</code>.</li>
-            <li>Add a matching <code>&lt;a class="nav-link" href="#your-slug" data-target="your-slug"&gt;</code> in the sidebar.</li>
-            <li>Push and enable GitHub Pages.</li>
-          </ol>
-          <div class="callout callout-tip">
-            <strong>Tip.</strong> The scroll-spy and active class are driven entirely by
-            <code>IntersectionObserver</code> — no manual index needed.
-          </div>
-        </div>
-      </section>
-
-      <section class="page" id="configuration">
-        <div class="page-inner">
-          <div class="breadcrumb">Getting started</div>
-          <h1 class="page-title">Configuration</h1>
-          <p class="page-lead">Everything configurable lives in CSS custom properties at the top of <code>style.css</code>.</p>
-          <h2>Design tokens</h2>
-          <pre><code>:root {
-  --sidebar-w:   260px;   /* sidebar width */
-  --topbar-h:    52px;    /* mobile top bar height */
-  --accent:      #4f8ef7; /* link / active colour */
-  --bg:          #0d0f14; /* page background */
-  --surface:     #13161e; /* sidebar / card background */
-  --border:      #252a38; /* divider colour */
-  --text:        #c9d1e0; /* body text */
-  --muted:       #5a6380; /* secondary text */
-  --radius:      8px;     /* border radius */
-  --font-sans:   system-ui, sans-serif;
-  --font-mono:   ui-monospace, monospace;
-}</code></pre>
-          <h2>Breakpoint</h2>
-          <p>
-            Below <code>768px</code> the sidebar collapses off-canvas.
-            The hamburger button appears in the top bar and toggles <code>.is-open</code>
-            on <code>#sidebar</code>. The overlay closes it on tap.
-          </p>
-        </div>
-      </section>
-
-      <section class="page" id="layout">
-        <div class="page-inner">
-          <div class="breadcrumb">Core concepts</div>
-          <h1 class="page-title">Layout</h1>
-          <p class="page-lead">
-            The shell is a two-column CSS grid: a fixed-width sidebar column and a
-            <code>1fr</code> content column, both filling <code>100dvh</code>.
-          </p>
-          <h2>Grid</h2>
-          <pre><code>.shell {
-  display: grid;
-  grid-template-columns: var(--sidebar-w) 1fr;
-  height: 100dvh;
-  overflow: hidden; /* scroll happens inside .content */
-}</code></pre>
-          <h2>Sidebar</h2>
-          <p>
-            <code>.sidebar</code> is <code>position: sticky; top: 0; height: 100dvh</code>
-            — it never scrolls. The nav inside it scrolls independently if there are
-            more links than the viewport can show.
-          </p>
-          <h2>Content</h2>
-          <p>
-            <code>.content</code> is <code>overflow-y: auto</code>. Each
-            <code>.page</code> section is at least <code>100dvh</code> tall so one
-            section fills the viewport before the next begins.
-          </p>
           <div class="card-row">
             <div class="card">
-              <div class="card-label">Sidebar</div>
-              <div class="card-value">Fixed · <code>260px</code></div>
+              <div class="card-label">Color Model</div>
+              <div class="card-value">Monochromatic</div>
             </div>
             <div class="card">
-              <div class="card-label">Content</div>
-              <div class="card-value">Fluid · <code>1fr</code> · scrollable</div>
+              <div class="card-label">Tinting</div>
+              <div class="card-value">0% (Pure R=G=B)</div>
             </div>
             <div class="card">
-              <div class="card-label">Section min-height</div>
-              <div class="card-value"><code>100dvh</code></div>
+              <div class="card-label">WCAG Contrast</div>
+              <div class="card-value">AAA compliant</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="page" id="navigation">
+      <!-- SECTION 2: Grayscale Tokens -->
+      <section class="page" id="tokens">
         <div class="page-inner">
-          <div class="breadcrumb">Core concepts</div>
-          <h1 class="page-title">Navigation</h1>
+          <div class="breadcrumb">Foundations</div>
+          <h1 class="page-title">Design Tokens &amp; Swatches</h1>
           <p class="page-lead">
-            The sidebar nav is plain anchor links. Active state is managed by
-            JavaScript, not by the browser's <code>:target</code> selector, so the
-            highlight persists through momentum scroll.
+            The canonical scale spans 13 pure grayscale steps from <code>#000000</code> to <code>#ffffff</code>.
           </p>
-          <h2>Markup</h2>
-          <pre><code>&lt;a class="nav-link" href="#section-id" data-target="section-id"&gt;
-  &lt;!-- optional svg icon --&gt;
-  Label
-&lt;/a&gt;</code></pre>
-          <h2>Groups</h2>
-          <p>
-            Add a <code>&lt;div class="nav-group-label"&gt;Group name&lt;/div&gt;</code>
-            before any set of links to create a visual section header. No JS needed.
-          </p>
-          <h2>Click behaviour</h2>
-          <p>
-            Clicking a link calls <code>scrollIntoView({ behavior: 'smooth' })</code>
-            on the target section and immediately sets the active class — no wait for
-            the scroll observer to fire.
-          </p>
+
+          <div class="swatch-grid">
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#000000"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-0</div>
+                <div class="swatch-hex">#000000</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#121212"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-10</div>
+                <div class="swatch-hex">#121212</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#1a1a1a"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-15</div>
+                <div class="swatch-hex">#1a1a1a</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#242424"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-20</div>
+                <div class="swatch-hex">#242424</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#303030"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-25</div>
+                <div class="swatch-hex">#303030</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#404040"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-30</div>
+                <div class="swatch-hex">#404040</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#555555"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-40</div>
+                <div class="swatch-hex">#555555</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#737373"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-50</div>
+                <div class="swatch-hex">#737373</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#8f8f8f"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-60</div>
+                <div class="swatch-hex">#8f8f8f</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#aaaaaa"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-70</div>
+                <div class="swatch-hex">#aaaaaa</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#cccccc"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-80</div>
+                <div class="swatch-hex">#cccccc</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#e5e5e5"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-90</div>
+                <div class="swatch-hex">#e5e5e5</div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-block" style="background:#ffffff"></div>
+              <div class="swatch-meta">
+                <div class="swatch-name">gray-100</div>
+                <div class="swatch-hex">#ffffff</div>
+              </div>
+            </div>
+          </div>
+
+          <h2>Token Mapping Definitions</h2>
+          <pre><code>--color-surface-page:     var(--gray-0);   /* #000000 */
+--color-surface-card:     var(--gray-10);  /* #121212 */
+--color-surface-hover:    var(--gray-15);  /* #1a1a1a */
+--color-surface-active:   var(--gray-20);  /* #242424 */
+--color-border-subtle:    var(--gray-20);  /* #242424 */
+--color-border-default:   var(--gray-25);  /* #303030 */
+--color-text-primary:     var(--gray-90);  /* #e5e5e5 */
+--color-text-secondary:   var(--gray-70);  /* #aaaaaa */
+--color-text-muted:       var(--gray-50);  /* #737373 */</code></pre>
         </div>
       </section>
 
-      <section class="page" id="scrolling">
+      <!-- SECTION 3: Typography -->
+      <section class="page" id="typography">
         <div class="page-inner">
-          <div class="breadcrumb">Core concepts</div>
-          <h1 class="page-title">Scrolling</h1>
+          <div class="breadcrumb">Foundations</div>
+          <h1 class="page-title">Typographic Scale</h1>
           <p class="page-lead">
-            Scroll-spy is implemented with a single <code>IntersectionObserver</code>
-            watching all <code>.page</code> sections inside the <code>.content</code> scroller.
+            Hierarchical type pairing using clean sans-serif for UI labels and mono for operational telemetry.
           </p>
-          <h2>Observer config</h2>
-          <pre><code>const observer = new IntersectionObserver(onIntersect, {
-  root: content,       // scroll container, not window
-  rootMargin: '0px',
-  threshold: 0.3,      // section must be 30% visible
-});</code></pre>
-          <h2>Why <code>root: content</code>?</h2>
-          <p>
-            The browser's default <code>IntersectionObserver</code> root is the
-            viewport. Because scroll happens inside <code>.content</code> (not on
-            <code>window</code>), the root must be set to that element or the observer
-            never fires.
-          </p>
-          <h2>Threshold</h2>
-          <p>
-            <code>0.3</code> means a section is "active" once 30% of it is visible.
-            Raise it toward <code>1.0</code> to require the section to be nearly
-            fully in view before the nav updates.
-          </p>
+
+          <div style="margin: 20px 0; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); padding: 24px; background: var(--color-surface-card);">
+            <div style="font-size: 2rem; font-weight: 700; color: var(--gray-100); margin-bottom: 8px;">Display Title (2rem)</div>
+            <div style="font-size: 1.5rem; font-weight: 600; color: var(--gray-90); margin-bottom: 8px;">Heading 1 (1.5rem)</div>
+            <div style="font-size: 1.15rem; font-weight: 600; color: var(--gray-90); margin-bottom: 8px;">Section Subheading (1.15rem)</div>
+            <div style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 8px;">Body text primary regular with comfortable reading line-height (0.95rem).</div>
+            <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--color-text-muted);">Monospace Telemetry Code Label [STATUS_OK] (0.75rem)</div>
+          </div>
         </div>
       </section>
 
-      <section class="page" id="components">
+      <!-- SECTION 4: Buttons -->
+      <section class="page" id="buttons">
         <div class="page-inner">
-          <div class="breadcrumb">Reference</div>
-          <h1 class="page-title">Components</h1>
-          <p class="page-lead">A small set of layout primitives included out of the box.</p>
+          <div class="breadcrumb">Primitives</div>
+          <h1 class="page-title">Buttons &amp; Actions</h1>
+          <p class="page-lead">
+            Stateful interactive button components using high-contrast monochromatic inversions.
+          </p>
 
-          <h2>Callouts</h2>
+          <h2>Button Variants</h2>
+          <div class="button-row">
+            <button class="btn btn-primary">Primary Solid</button>
+            <button class="btn btn-secondary">Secondary Surface</button>
+            <button class="btn btn-outline">Outline Stroke</button>
+            <button class="btn btn-disabled" disabled>Disabled State</button>
+          </div>
+
+          <h2>Code Example</h2>
+          <pre><code>&lt;button class="btn btn-primary"&gt;Primary Solid&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary Surface&lt;/button&gt;
+&lt;button class="btn btn-outline"&gt;Outline Stroke&lt;/button&gt;
+&lt;button class="btn btn-disabled" disabled&gt;Disabled State&lt;/button&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- SECTION 5: Badges -->
+      <section class="page" id="badges">
+        <div class="page-inner">
+          <div class="breadcrumb">Primitives</div>
+          <h1 class="page-title">Badges &amp; Status Indicators</h1>
+          <p class="page-lead">
+            Non-chromatic badges expressing status and category taxonomy through gray-value differentiation.
+          </p>
+
+          <h2>Badge Styles</h2>
+          <div class="badge-row">
+            <span class="badge badge-solid">SOLID ACTIVE</span>
+            <span class="badge badge-default">DEFAULT PILL</span>
+            <span class="badge badge-subtle">SUBTLE OUTLINE</span>
+            <span class="badge badge-default badge-dot">COMMITTED</span>
+            <span class="badge badge-subtle badge-dot">STANDBY</span>
+          </div>
+
+          <h2>Status Color System Mapping (Monochrome Fallback)</h2>
+          <p>
+            When strictly operating without color tints, status mapping preserves hierarchy via shade and border density:
+          </p>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Status State</th>
+                  <th>Visual Treatment</th>
+                  <th>Token Mapping</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Active / Current</td>
+                  <td>Solid White Inversion</td>
+                  <td><code>bg-gray-100 text-gray-0</code></td>
+                </tr>
+                <tr>
+                  <td>Queued / Draft</td>
+                  <td>Mid-tone Border + Label</td>
+                  <td><code>border-gray-30 text-gray-90</code></td>
+                </tr>
+                <tr>
+                  <td>Review / Blocked</td>
+                  <td>Double-weighted Border</td>
+                  <td><code>border-gray-50 text-gray-100</code></td>
+                </tr>
+                <tr>
+                  <td>Complete / Muted</td>
+                  <td>Subtle Low-contrast</td>
+                  <td><code>border-gray-20 text-gray-50</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: Callouts -->
+      <section class="page" id="callouts">
+        <div class="page-inner">
+          <div class="breadcrumb">Primitives</div>
+          <h1 class="page-title">Callouts &amp; Alerts</h1>
+          <p class="page-lead">
+            Structural callout banners differentiated by border stroke density and tone rather than chromatic alert fills.
+          </p>
+
           <div class="callout callout-info">
-            <strong>Info.</strong> Use <code>.callout.callout-info</code> for notes and context.
+            <strong>Default Information Notice</strong>
+            Standard announcement callout using high-contrast white border accent to guide attention.
           </div>
-          <div class="callout callout-tip">
-            <strong>Tip.</strong> Use <code>.callout.callout-tip</code> for recommendations.
+
+          <div class="callout callout-subtle">
+            <strong>Subtle Implementation Detail</strong>
+            Lower priority technical detail or contextual documentation footnote.
           </div>
+
           <div class="callout callout-warn">
-            <strong>Warning.</strong> Use <code>.callout.callout-warn</code> for caution.
+            <strong>High-Priority Constraint Notice</strong>
+            Elevated caution boundary using <code>var(--gray-15)</code> background fill and <code>var(--gray-80)</code> stroke.
           </div>
+        </div>
+      </section>
 
-          <h2>Stat cards</h2>
+      <!-- SECTION 7: Surfaces -->
+      <section class="page" id="surfaces">
+        <div class="page-inner">
+          <div class="breadcrumb">Structures</div>
+          <h1 class="page-title">Cards &amp; Container Surfaces</h1>
+          <p class="page-lead">
+            Spatial containers utilizing subtle boundary lines and background luminance steps to organize content.
+          </p>
+
           <div class="card-row">
             <div class="card">
-              <div class="card-label">Sections</div>
-              <div class="card-value">8</div>
+              <div class="card-label">Surface Card 01</div>
+              <div class="card-value">12.4 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">ms</span></div>
             </div>
             <div class="card">
-              <div class="card-label">Dependencies</div>
-              <div class="card-value">0</div>
+              <div class="card-label">Surface Card 02</div>
+              <div class="card-value">8,188 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">MiB</span></div>
             </div>
             <div class="card">
-              <div class="card-label">Build step</div>
-              <div class="card-value">None</div>
+              <div class="card-label">Surface Card 03</div>
+              <div class="card-value">100.0 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">%</span></div>
             </div>
           </div>
-
-          <h2>Code block</h2>
-          <pre><code>// Any &lt;pre&gt;&lt;code&gt; block gets styled automatically.
-const answer = 42;</code></pre>
         </div>
       </section>
 
-      <section class="page" id="deployment">
+      <!-- SECTION 8: Tables -->
+      <section class="page" id="tables">
         <div class="page-inner">
-          <div class="breadcrumb">Reference</div>
-          <h1 class="page-title">Deployment</h1>
-          <p class="page-lead">Three commands from a fresh clone to a live GitHub Pages site.</p>
-          <h2>1. Create a public repo</h2>
-          <pre><code>gh repo create gh-pages-demo --public --source=. --remote=origin --push</code></pre>
-          <h2>2. Enable Pages from main /</h2>
-          <pre><code>gh api repos/:owner/gh-pages-demo/pages \
-  --method POST \
-  -f source.branch=main \
-  -f source.path=/</code></pre>
-          <h2>3. Open the live URL</h2>
-          <pre><code>gh browse --repo :owner/gh-pages-demo</code></pre>
-          <div class="callout callout-info">
-            Pages builds take ~30 seconds. The URL follows the pattern
-            <code>https://&lt;owner&gt;.github.io/&lt;repo&gt;/</code>.
-          </div>
-          <h2>Updating</h2>
-          <p>
-            Every push to <code>main</code> triggers a Pages rebuild automatically.
-            No workflow file or Actions config required for a plain static site.
+          <div class="breadcrumb">Structures</div>
+          <h1 class="page-title">Data Tables &amp; Telemetry Lists</h1>
+          <p class="page-lead">
+            Information-dense tables with subtle hover feedback and clean tabular numeric alignment.
           </p>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Category</th>
+                  <th>DOM Selector</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sidebar Navigation</td>
+                  <td>Shell</td>
+                  <td><code>.sidebar</code></td>
+                  <td><span class="badge badge-default">READY</span></td>
+                </tr>
+                <tr>
+                  <td>Scroll-spy Engine</td>
+                  <td>Interaction</td>
+                  <td><code>IntersectionObserver</code></td>
+                  <td><span class="badge badge-default">READY</span></td>
+                </tr>
+                <tr>
+                  <td>Button Primitive</td>
+                  <td>Action</td>
+                  <td><code>.btn</code></td>
+                  <td><span class="badge badge-default">READY</span></td>
+                </tr>
+                <tr>
+                  <td>Data Table Wrap</td>
+                  <td>Structure</td>
+                  <td><code>.table-wrap</code></td>
+                  <td><span class="badge badge-default">READY</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
-      <section class="page" id="faq">
+      <!-- SECTION 9: Forms -->
+      <section class="page" id="forms">
         <div class="page-inner">
-          <div class="breadcrumb">Reference</div>
-          <h1 class="page-title">FAQ</h1>
-          <p class="page-lead">Common questions.</p>
+          <div class="breadcrumb">Structures</div>
+          <h1 class="page-title">Inputs &amp; Form Controls</h1>
+          <p class="page-lead">
+            Accessible input fields with crisp focus rings and pure neutral styling.
+          </p>
 
-          <div class="faq-item">
-            <div class="faq-q">Can I use this with a custom domain?</div>
-            <div class="faq-a">
-              Yes. Add a <code>CNAME</code> file to the repo root containing your domain,
-              then set the DNS records GitHub specifies in Settings → Pages.
-            </div>
+          <div class="form-group">
+            <label class="form-label" for="sample-input">Repository Access Key</label>
+            <input type="text" id="sample-input" class="form-input" placeholder="e.g. repo-37-token" />
+            <span class="form-help">Focus input to view the pure white focus border.</span>
           </div>
-          <div class="faq-item">
-            <div class="faq-q">Can I add more sections?</div>
-            <div class="faq-a">
-              Add a <code>&lt;section class="page" id="slug"&gt;</code> to <code>index.html</code>
-              and a matching <code>.nav-link</code> in the sidebar. The observer picks it up
-              automatically — no JS changes needed.
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Does it work without JavaScript?</div>
-            <div class="faq-a">
-              The layout and content are fully readable. The active nav highlight and mobile
-              menu won't work, but all links still navigate via standard anchor href behaviour.
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Can I use light mode?</div>
-            <div class="faq-a">
-              Swap the token values in <code>:root</code> inside <code>style.css</code>, or
-              add a <code>@media (prefers-color-scheme: light)</code> block to override them.
-            </div>
+
+          <div class="button-row">
+            <button class="btn btn-primary">Save Changes</button>
+            <button class="btn btn-outline">Cancel</button>
           </div>
         </div>
       </section>
