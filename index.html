@@ -5,27 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Component Library · Pure Grayscale Design System</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Native Mermaid.js integration with strict dark/neutral theme variables -->
+  <!-- Native Mermaid.js integration with strict dark/neutral theme variables and responsive scaling -->
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     mermaid.initialize({
       startOnLoad: true,
       theme: 'base',
+      securityLevel: 'loose',
       themeVariables: {
         darkMode: true,
         background: '#121212',
         mainBkg: '#1a1a1a',
         primaryColor: '#1a1a1a',
-        primaryTextColor: '#e5e5e5',
-        primaryBorderColor: '#404040',
-        lineColor: '#737373',
+        primaryTextColor: '#ffffff',
+        primaryBorderColor: '#555555',
+        lineColor: '#8f8f8f',
         secondaryColor: '#242424',
         tertiaryColor: '#121212',
-        nodeBorder: '#404040',
-        clusterBkg: '#1a1a1a',
+        nodeBorder: '#555555',
+        clusterBkg: '#121212',
         clusterBorder: '#303030',
         edgeLabelBackground: '#121212',
-        fontFamily: 'Inter, system-ui, sans-serif'
+        fontFamily: 'Inter, system-ui, sans-serif',
+        fontSize: '15px'
       }
     });
   </script>
@@ -80,35 +82,41 @@
         <div class="nav-group-label">Foundations</div>
         <a class="nav-link active" href="#overview" data-target="overview">
           <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          Overview
-        </a>
-        <a class="nav-link" href="#tokens" data-target="tokens">
-          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-          Grayscale Tokens
-        </a>
-        <a class="nav-link" href="#typography" data-target="typography">
-          <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
-          Typography
+          Overview &amp; Tokens
         </a>
 
         <div class="nav-group-label">Primitives</div>
         <a class="nav-link" href="#buttons" data-target="buttons">
           <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/></svg>
-          Buttons
+          Buttons &amp; Groups
         </a>
         <a class="nav-link" href="#badges" data-target="badges">
           <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-          Badges &amp; Tags
+          Badges &amp; Status
         </a>
         <a class="nav-link" href="#callouts" data-target="callouts">
           <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Callouts &amp; Alerts
         </a>
 
+        <div class="nav-group-label">Structures</div>
+        <a class="nav-link" href="#surfaces" data-target="surfaces">
+          <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Cards &amp; Metric Tiles
+        </a>
+        <a class="nav-link" href="#forms" data-target="forms">
+          <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+          Inputs, Toggles &amp; Sliders
+        </a>
+        <a class="nav-link" href="#tables" data-target="tables">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18"/></svg>
+          Data Tables
+        </a>
+
         <div class="nav-group-label">Visualisations</div>
         <a class="nav-link" href="#charts" data-target="charts">
           <svg class="nav-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          Matplotlib Wrapper
+          Matplotlib Plots
         </a>
         <a class="nav-link" href="#mermaid" data-target="mermaid">
           <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -119,18 +127,10 @@
           ASCII Architecture
         </a>
 
-        <div class="nav-group-label">Structures</div>
-        <a class="nav-link" href="#surfaces" data-target="surfaces">
-          <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          Cards &amp; Surfaces
-        </a>
-        <a class="nav-link" href="#tables" data-target="tables">
-          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18"/></svg>
-          Data Tables
-        </a>
-        <a class="nav-link" href="#forms" data-target="forms">
-          <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
-          Inputs &amp; Forms
+        <div class="nav-group-label">Layout Archetypes</div>
+        <a class="nav-link" href="#wireframes" data-target="wireframes">
+          <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          9 Wireframe Layouts
         </a>
       </nav>
 
@@ -165,277 +165,426 @@
     <!-- Main Scrollable Content -->
     <main class="content" id="content">
 
-      <!-- SECTION 1: Overview -->
+      <!-- SECTION 1: Overview & Design Tokens (Consolidated) -->
       <section class="page" id="overview">
         <div class="page-inner">
-          <div class="breadcrumb">Foundations</div>
+          <div class="breadcrumb">Foundations · Design Tokens &amp; Typography</div>
           <h1 class="page-title">Pure Grayscale Component Library</h1>
           <p class="page-lead">
             A production-ready design system implementation based directly on <code>$WIKI/gui/design-system/</code>.
-            Built with strict pure grayscale neutrals (zero chromatic tinting, R===G===B) supporting both dark and light modes.
+            Consolidates the complete 15-step grayscale token scale, typography hierarchy, and theme mechanics directly into the foundations.
           </p>
 
           <div class="callout callout-info">
-            <strong>Theme Architecture Specification.</strong>
-            In Light Mode, the overall canvas background is not pure white, but an off-white neutral (<code>#f0f0f0</code>), while cards, tables, and the fixed sidebar are elevated pure white (<code>#ffffff</code>). This preserves spatial depth and container separation without relying on colored shadows or saturation.
+            <strong>Strict Monochromatic Rule ($R = G = B).</strong>
+            Every surface, border, and text token is strictly mapped to an un-tinted gray channel.
+            In Light Mode, the overall canvas background is an off-white neutral (<code>#f0f0f0</code>), while cards, tables, and the fixed sidebar are elevated pure white (<code>#ffffff</code>).
           </div>
 
-          <h2>Core Principles</h2>
-          <ul>
-            <li><strong>Content-First Minimalism:</strong> Chrome and decorative framing are reduced to purposeful spatial lines and pure value hierarchy.</li>
-            <li><strong>Strict Value Contrast:</strong> High-density UI requiring clarity across both deep dark surfaces and clean light paper surfaces.</li>
-            <li><strong>Theme Toggle:</strong> Built-in toggle supporting OS preferences (<code>prefers-color-scheme</code>) and persistent user choices.</li>
-          </ul>
-
-          <div class="card-row">
-            <div class="card">
-              <div class="card-label">Color Model</div>
-              <div class="card-value">Monochromatic</div>
+          <!-- Foundation Swatches Card -->
+          <div class="card" style="margin-bottom:24px;">
+            <div class="card-header">
+              <span class="card-label">15-Step Pure Grayscale Primitive Scale</span>
+              <span class="badge badge-default">R === G === B</span>
             </div>
-            <div class="card">
-              <div class="card-label">Light Mode BG</div>
-              <div class="card-value">#f0f0f0 (Off-White)</div>
+            <div class="swatch-grid" style="margin:8px 0 16px;">
+              <div class="swatch-card"><div class="swatch-block" style="background:#000000"></div><div class="swatch-meta"><div class="swatch-name">gray-0</div><div class="swatch-hex">#000000</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#121212"></div><div class="swatch-meta"><div class="swatch-name">gray-10</div><div class="swatch-hex">#121212</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#1a1a1a"></div><div class="swatch-meta"><div class="swatch-name">gray-15</div><div class="swatch-hex">#1a1a1a</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#242424"></div><div class="swatch-meta"><div class="swatch-name">gray-20</div><div class="swatch-hex">#242424</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#303030"></div><div class="swatch-meta"><div class="swatch-name">gray-25</div><div class="swatch-hex">#303030</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#404040"></div><div class="swatch-meta"><div class="swatch-name">gray-30</div><div class="swatch-hex">#404040</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#555555"></div><div class="swatch-meta"><div class="swatch-name">gray-40</div><div class="swatch-hex">#555555</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#737373"></div><div class="swatch-meta"><div class="swatch-name">gray-50</div><div class="swatch-hex">#737373</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#8f8f8f"></div><div class="swatch-meta"><div class="swatch-name">gray-60</div><div class="swatch-hex">#8f8f8f</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#aaaaaa"></div><div class="swatch-meta"><div class="swatch-name">gray-70</div><div class="swatch-hex">#aaaaaa</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#cccccc"></div><div class="swatch-meta"><div class="swatch-name">gray-80</div><div class="swatch-hex">#cccccc</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#d9d9d9"></div><div class="swatch-meta"><div class="swatch-name">gray-85</div><div class="swatch-hex">#d9d9d9</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#e5e5e5"></div><div class="swatch-meta"><div class="swatch-name">gray-90</div><div class="swatch-hex">#e5e5e5</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#f0f0f0"></div><div class="swatch-meta"><div class="swatch-name">gray-95</div><div class="swatch-hex">#f0f0f0</div></div></div>
+              <div class="swatch-card"><div class="swatch-block" style="background:#ffffff"></div><div class="swatch-meta"><div class="swatch-name">gray-100</div><div class="swatch-hex">#ffffff</div></div></div>
             </div>
-            <div class="card">
-              <div class="card-label">Cards &amp; Sidebar</div>
-              <div class="card-value">#ffffff (Pure White)</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 2: Grayscale Tokens -->
-      <section class="page" id="tokens">
-        <div class="page-inner">
-          <div class="breadcrumb">Foundations</div>
-          <h1 class="page-title">Design Tokens &amp; Swatches</h1>
-          <p class="page-lead">
-            The canonical scale spans 15 pure grayscale steps from <code>#000000</code> to <code>#ffffff</code>.
-          </p>
-
-          <div class="swatch-grid">
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#000000"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-0</div>
-                <div class="swatch-hex">#000000</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#121212"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-10</div>
-                <div class="swatch-hex">#121212</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#1a1a1a"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-15</div>
-                <div class="swatch-hex">#1a1a1a</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#242424"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-20</div>
-                <div class="swatch-hex">#242424</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#303030"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-25</div>
-                <div class="swatch-hex">#303030</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#404040"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-30</div>
-                <div class="swatch-hex">#404040</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#555555"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-40</div>
-                <div class="swatch-hex">#555555</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#737373"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-50</div>
-                <div class="swatch-hex">#737373</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#8f8f8f"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-60</div>
-                <div class="swatch-hex">#8f8f8f</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#aaaaaa"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-70</div>
-                <div class="swatch-hex">#aaaaaa</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#cccccc"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-80</div>
-                <div class="swatch-hex">#cccccc</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#d9d9d9"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-85</div>
-                <div class="swatch-hex">#d9d9d9</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#e5e5e5"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-90</div>
-                <div class="swatch-hex">#e5e5e5</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#f0f0f0"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-95</div>
-                <div class="swatch-hex">#f0f0f0</div>
-              </div>
-            </div>
-            <div class="swatch-card">
-              <div class="swatch-block" style="background:#ffffff"></div>
-              <div class="swatch-meta">
-                <div class="swatch-name">gray-100</div>
-                <div class="swatch-hex">#ffffff</div>
-              </div>
-            </div>
+            <pre style="margin:0;"><code>/* Dark Theme */  --color-surface-page: #000000;  --color-surface-card: #121212;  --color-border: #303030;
+/* Light Theme */ --color-surface-page: #f0f0f0;  --color-surface-card: #ffffff;  --color-border: #cccccc;</code></pre>
           </div>
 
-          <h2>Theme Token Mappings</h2>
-          <pre><code>/* Dark Mode (Default) */
---color-surface-page:       #000000;  /* Pure black canvas */
---color-surface-card:       #121212;  /* Elevated card surface */
-
-/* Light Mode */
---color-surface-page:       #f0f0f0;  /* Off-white canvas (not pure white) */
---color-surface-card:       #ffffff;  /* Pure white cards &amp; sidebar */
---color-border-subtle:      #d9d9d9;
---color-border-default:     #cccccc;</code></pre>
-        </div>
-      </section>
-
-      <!-- SECTION 3: Typography -->
-      <section class="page" id="typography">
-        <div class="page-inner">
-          <div class="breadcrumb">Foundations</div>
-          <h1 class="page-title">Typographic Scale</h1>
-          <p class="page-lead">
-            Hierarchical type pairing using clean sans-serif for UI labels and mono for operational telemetry.
-          </p>
-
-          <div style="margin: 20px 0; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); padding: 24px; background: var(--color-surface-card);">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--color-text-strong); margin-bottom: 8px;">Display Title (2rem)</div>
-            <div style="font-size: 1.5rem; font-weight: 600; color: var(--color-text-strong); margin-bottom: 8px;">Heading 1 (1.5rem)</div>
-            <div style="font-size: 1.15rem; font-weight: 600; color: var(--color-text-strong); margin-bottom: 8px;">Section Subheading (1.15rem)</div>
-            <div style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 8px;">Body text primary regular with comfortable reading line-height (0.95rem).</div>
-            <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--color-text-muted);">Monospace Telemetry Code Label [STATUS_OK] (0.75rem)</div>
+          <!-- Foundation Typography Card -->
+          <div class="card">
+            <div class="card-header">
+              <span class="card-label">Integrated Typographic Scale</span>
+              <span class="badge badge-default">Inter + JetBrains Mono</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;padding:8px 0;">
+              <div><span style="font-size:0.7rem;font-family:var(--font-mono);color:var(--color-text-muted);">DISPLAY 2.0rem / 700:</span><div style="font-size:2rem;font-weight:700;color:var(--color-text-strong);line-height:1.2;">Local-First Autonomous Fleet Architecture</div></div>
+              <div><span style="font-size:0.7rem;font-family:var(--font-mono);color:var(--color-text-muted);">HEADING 1 1.5rem / 600:</span><div style="font-size:1.5rem;font-weight:600;color:var(--color-text-strong);line-height:1.3;">Hardware Allocation &amp; Inference Routing</div></div>
+              <div><span style="font-size:0.7rem;font-family:var(--font-mono);color:var(--color-text-muted);">SUBHEADING 1.15rem / 600:</span><div style="font-size:1.15rem;font-weight:600;color:var(--color-text-strong);">System-1 Edge Slot Latency &amp; Gate Bounds</div></div>
+              <div><span style="font-size:0.7rem;font-family:var(--font-mono);color:var(--color-text-muted);">BODY PRIMARY 0.95rem / 400:</span><div style="font-size:0.95rem;color:var(--color-text-secondary);line-height:1.6;">The fleet operates within an 8,188 MiB VRAM envelope. Everything cheap leaves the card to maintain zero-discovery pre-prompt injection.</div></div>
+              <div><span style="font-size:0.7rem;font-family:var(--font-mono);color:var(--color-text-muted);">MONOSPACE TELEMETRY 0.78rem / 400:</span><div style="font-size:0.78rem;font-family:var(--font-mono);color:var(--color-text-muted);">[TELEMETRY] DECODE_RATE=33.5tok/s VRAM_RESERVED=7500MiB STATUS=STABLE_PASS</div></div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 4: Buttons -->
+      <!-- SECTION 2: Buttons & Actions (3x Variety) -->
       <section class="page" id="buttons">
         <div class="page-inner">
           <div class="breadcrumb">Primitives</div>
           <h1 class="page-title">Buttons &amp; Actions</h1>
           <p class="page-lead">
-            Stateful interactive button components using high-contrast monochromatic inversions.
+            High-contrast monochromatic interactive controls covering 6 button styles, 3 sizing scales, icon triggers, and joined button groups.
           </p>
 
-          <h2>Button Variants</h2>
+          <h2>Button Style Variants</h2>
           <div class="button-row">
             <button class="btn btn-primary">Primary Solid</button>
             <button class="btn btn-secondary">Secondary Surface</button>
             <button class="btn btn-outline">Outline Stroke</button>
+            <button class="btn btn-ghost">Ghost Text</button>
             <button class="btn btn-disabled" disabled>Disabled State</button>
+          </div>
+
+          <h2>Sizing Scales &amp; Icon Triggers</h2>
+          <div class="button-row">
+            <button class="btn btn-primary btn-sm">Small (btn-sm)</button>
+            <button class="btn btn-secondary">Default Standard</button>
+            <button class="btn btn-primary btn-lg">Large Action (btn-lg)</button>
+            <button class="btn btn-secondary btn-icon" title="Refresh">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </button>
+            <button class="btn btn-outline btn-icon" title="Settings">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+          </div>
+
+          <h2>Segmented Button Groups</h2>
+          <div class="button-row">
+            <div class="btn-group">
+              <button class="btn btn-secondary">Day</button>
+              <button class="btn btn-secondary">Week</button>
+              <button class="btn btn-primary">Month</button>
+              <button class="btn btn-secondary">Quarter</button>
+            </div>
+
+            <div class="segmented-control">
+              <button class="segment-btn active">INSPECT</button>
+              <button class="segment-btn">TELEMETRY</button>
+              <button class="segment-btn">CONFIG</button>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 5: Badges -->
+      <!-- SECTION 3: Badges & Status (3x Variety) -->
       <section class="page" id="badges">
         <div class="page-inner">
           <div class="breadcrumb">Primitives</div>
-          <h1 class="page-title">Badges &amp; Status Indicators</h1>
+          <h1 class="page-title">Badges, Tags &amp; Status Indicators</h1>
           <p class="page-lead">
-            Non-chromatic badges expressing status and category taxonomy through gray-value differentiation.
+            Non-chromatic status badges, category tags, counter pills, and live state dots categorized across 6 visual treatments.
           </p>
 
-          <h2>Badge Styles</h2>
+          <h2>Badge Styles &amp; Treatments</h2>
           <div class="badge-row">
             <span class="badge badge-solid">SOLID ACTIVE</span>
             <span class="badge badge-default">DEFAULT PILL</span>
             <span class="badge badge-subtle">SUBTLE OUTLINE</span>
+            <span class="badge badge-bordered">HIGH CONTRAST</span>
+            <span class="badge badge-pill badge-default">ROUNDED PILL</span>
+          </div>
+
+          <h2>Status States with Live Dot Indicators</h2>
+          <div class="badge-row">
+            <span class="badge badge-solid badge-dot">RUNNING · 176 T/S</span>
             <span class="badge badge-default badge-dot">COMMITTED</span>
-            <span class="badge badge-subtle badge-dot">STANDBY</span>
+            <span class="badge badge-subtle badge-dot">STANDBY IDLE</span>
+            <span class="badge badge-default">QUEUE: #04</span>
+            <span class="badge badge-subtle">ALLOC: 7,500 MiB</span>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 6: Callouts -->
+      <!-- SECTION 4: Callouts & Alerts (3x Variety) -->
       <section class="page" id="callouts">
         <div class="page-inner">
           <div class="breadcrumb">Primitives</div>
           <h1 class="page-title">Callouts &amp; Alerts</h1>
           <p class="page-lead">
-            Structural callout banners differentiated by border stroke density and tone rather than chromatic alert fills.
+            Contextual callout banners differentiated by border stroke density, surface tone, and spatial alignment.
           </p>
 
           <div class="callout callout-info">
-            <strong>Default Information Notice</strong>
-            Standard announcement callout using high-contrast border accent to guide attention.
+            <strong>Default Information Notice (callout-info)</strong>
+            Standard announcement callout using high-contrast white border accent to guide attention.
           </div>
 
           <div class="callout callout-subtle">
-            <strong>Subtle Implementation Detail</strong>
+            <strong>Subtle Implementation Detail (callout-subtle)</strong>
             Lower priority technical detail or contextual documentation footnote.
           </div>
 
           <div class="callout callout-warn">
-            <strong>High-Priority Constraint Notice</strong>
-            Elevated caution boundary using elevated background fill and emphasized stroke.
+            <strong>High-Priority Caution Notice (callout-warn)</strong>
+            Elevated caution boundary using <code>var(--color-surface-hover)</code> background fill and emphasized stroke.
+          </div>
+
+          <div class="callout callout-error">
+            <strong>Critical Blocked Gate (callout-error)</strong>
+            Double-bordered failure alert denoting test gate refusal or parameter saturation violation.
+          </div>
+
+          <div class="callout callout-minimal">
+            <strong>Minimalist Inline Directive:</strong> Simple single-line unobtrusive technical notation for inline reading.
           </div>
         </div>
       </section>
 
-      <!-- SECTION 7: Matplotlib Chart Wrapper -->
+      <!-- SECTION 5: Cards & Metric Surfaces (3x Variety) -->
+      <section class="page" id="surfaces">
+        <div class="page-inner">
+          <div class="breadcrumb">Structures</div>
+          <h1 class="page-title">Cards &amp; Metric Surfaces</h1>
+          <p class="page-lead">
+            Spatial containers utilizing subtle boundary lines, elevation steps, and hover micro-interactions.
+          </p>
+
+          <h2>Standard Metric Grid (grid-3)</h2>
+          <div class="grid-3">
+            <div class="card">
+              <div class="card-header">
+                <span class="card-label">Peak Throughput</span>
+                <span class="badge badge-subtle">PRIMARY</span>
+              </div>
+              <div class="card-value">33.5 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">tok/s</span></div>
+              <div class="card-subtext">35B-A3B Q4_K_M decode rate</div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <span class="card-label">Address Latency</span>
+                <span class="badge badge-default">ZERO-DISC</span>
+              </div>
+              <div class="card-value">5.8 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">µs</span></div>
+              <div class="card-subtext">Pre-prompt injection hook cost</div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <span class="card-label">Free Headroom</span>
+                <span class="badge badge-subtle">SAFE</span>
+              </div>
+              <div class="card-value">208 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">MiB</span></div>
+              <div class="card-subtext">2.4% buffer at 16k context</div>
+            </div>
+          </div>
+
+          <h2>Interactive &amp; Elevated Variants (grid-2)</h2>
+          <div class="grid-2">
+            <div class="card card-interactive">
+              <div class="card-header">
+                <span class="card-label">Interactive Card Variant</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+              <h3 style="margin-top:0;">Hardware Partition Matrix</h3>
+              <p style="font-size:0.82rem;margin-bottom:0;">Clickable container with subtle hover lift and reinforced border highlighting on hover.</p>
+            </div>
+
+            <div class="card card-bordered card-elevated">
+              <div class="card-header">
+                <span class="card-label">Elevated Boundary Variant</span>
+                <span class="badge badge-solid">ELEVATED</span>
+              </div>
+              <h3 style="margin-top:0;">Critical Safety Interlock</h3>
+              <p style="font-size:0.82rem;margin-bottom:0;">Features a prominent 2px perimeter boundary with intensified box-shadow depth.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: Inputs, Toggles & Forms (3x Variety) -->
+      <section class="page" id="forms">
+        <div class="page-inner">
+          <div class="breadcrumb">Structures</div>
+          <h1 class="page-title">Inputs, Toggles &amp; Form Controls</h1>
+          <p class="page-lead">
+            Accessible input fields, dropdown selects, toggle switches, checkboxes, textareas, and progress indicators.
+          </p>
+
+          <div class="grid-2">
+            <div>
+              <div class="form-group">
+                <label class="form-label" for="txt-input">Endpoint URL</label>
+                <input type="text" id="txt-input" class="form-input" value="http://127.0.0.1:18090/v1/chat" />
+                <span class="form-help">Local inference gateway port.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sel-model">Model Slot Allocation</label>
+                <select id="sel-model" class="form-select">
+                  <option>35B-A3B Q4_K_M (System-2 Primary)</option>
+                  <option>Choice-Laya-3B (Decision Door)</option>
+                  <option>LFM2.5-2.6B (Satellite Generator)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tx-notes">Execution Notes</label>
+                <textarea id="tx-notes" class="form-textarea" placeholder="Enter validation trace notes..."></textarea>
+              </div>
+            </div>
+
+            <div>
+              <div class="card" style="margin-bottom:16px;">
+                <div class="card-header"><span class="card-label">Feature Flags</span></div>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                  <label class="switch-label">
+                    <input type="checkbox" class="switch-input" checked />
+                    <span class="switch-track"><span class="switch-thumb"></span></span>
+                    <span>Zero-Discovery Context Hook</span>
+                  </label>
+                  <label class="switch-label">
+                    <input type="checkbox" class="switch-input" />
+                    <span class="switch-track"><span class="switch-thumb"></span></span>
+                    <span>Metal Satellite Peer Fallback</span>
+                  </label>
+                  <label class="switch-label">
+                    <input type="checkbox" class="switch-input" checked />
+                    <span class="switch-track"><span class="switch-thumb"></span></span>
+                    <span>Entropy Sampling Triage</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header"><span class="card-label">Allocation Gauge</span></div>
+                <div style="font-size:0.8rem;display:flex;justify-content:space-between;margin-bottom:4px;">
+                  <span>VRAM Consumption</span>
+                  <span style="font-family:var(--font-mono);">7,980 / 8,188 MiB</span>
+                </div>
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 97.4%;"></div>
+                </div>
+                <div style="display:flex;gap:16px;margin-top:12px;">
+                  <label class="check-item"><input type="checkbox" checked /> Lock Lease</label>
+                  <label class="check-item"><input type="checkbox" /> Evict Cache</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: Data Tables (3x Variety) -->
+      <section class="page" id="tables">
+        <div class="page-inner">
+          <div class="breadcrumb">Structures</div>
+          <h1 class="page-title">Data Tables &amp; Telemetry Lists</h1>
+          <p class="page-lead">
+            Information-dense tables covering standard, compact dense, and striped styles with responsive horizontal scrolling.
+          </p>
+
+          <h2>Standard Telemetry Table</h2>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Host Role</th>
+                  <th>Hardware Target</th>
+                  <th>Active Model Body</th>
+                  <th>VRAM Lease</th>
+                  <th>Gate Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Primary Inferrer</td>
+                  <td>ROG Ally Z1 Extreme</td>
+                  <td>35B-A3B Q4_K_M</td>
+                  <td>7,500 MiB</td>
+                  <td><span class="badge badge-solid">PASS</span></td>
+                </tr>
+                <tr>
+                  <td>Satellite Peer</td>
+                  <td>Mac Mini M4</td>
+                  <td>LFM2.5-2.6B + bge-large</td>
+                  <td>5,800 MiB Unified</td>
+                  <td><span class="badge badge-default">STANDBY</span></td>
+                </tr>
+                <tr>
+                  <td>Decision Door</td>
+                  <td>NPU / CPU Offload</td>
+                  <td>Choice-Laya-3B Q8_0</td>
+                  <td>0 MiB VRAM</td>
+                  <td><span class="badge badge-default">READY</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Dense Striped Table Variant (.table-dense .table-striped)</h2>
+          <div class="table-wrap">
+            <table class="data-table table-dense table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Slot Key</th>
+                  <th>Prompt Latency</th>
+                  <th>Decode Rate</th>
+                  <th>State</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>01</td>
+                  <td><code>system1.decider</code></td>
+                  <td>28.4 ms</td>
+                  <td>142 tok/s</td>
+                  <td>RESIDENT</td>
+                </tr>
+                <tr>
+                  <td>02</td>
+                  <td><code>system1.embedder</code></td>
+                  <td>42.1 ms</td>
+                  <td>N/A</td>
+                  <td>OFFLOADED</td>
+                </tr>
+                <tr>
+                  <td>03</td>
+                  <td><code>system2.generator</code></td>
+                  <td>182.0 ms</td>
+                  <td>33.5 tok/s</td>
+                  <td>RESIDENT</td>
+                </tr>
+                <tr>
+                  <td>04</td>
+                  <td><code>system2.extractor</code></td>
+                  <td>94.2 ms</td>
+                  <td>38 tok/s (CPU)</td>
+                  <td>CPU_BOUND</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: Matplotlib Chart Wrapper -->
       <section class="page" id="charts">
         <div class="page-inner">
           <div class="breadcrumb">Visualisations</div>
           <h1 class="page-title">Matplotlib Chart Wrapper</h1>
           <p class="page-lead">
-            Wrapper component (<code>.viz-frame</code>) for embedding scientific plots, telemetry curves, and analytical outputs rendered from Python / Matplotlib.
+            Wrapper component (<code>.viz-frame</code>) supporting dark adaptive telemetry canvases and light publication paper surfaces.
           </p>
 
           <div class="viz-frame">
             <div class="viz-header">
               <div class="viz-title">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                FIG-01 · In-Card Telemetry Response Curve
+                FIG-01 · In-Card Telemetry Response Curve (Adaptive Vector)
               </div>
               <div class="viz-actions">
                 <button class="viz-btn" onclick="window.open('sample-chart.svg')">SVG</button>
-                <button class="viz-btn" onclick="alert('Export Raw Data JSON')">DATA</button>
+                <button class="viz-btn" onclick="alert('Export Raw Telemetry CSV')">CSV</button>
               </div>
             </div>
             <div class="viz-canvas">
@@ -443,93 +592,96 @@
             </div>
             <div class="viz-footer">
               <span>Source: telemetry_signal_probe.py · 100 samples</span>
-              <span>Render: vector SVG (150 dpi)</span>
+              <span>Format: vector SVG (150 dpi)</span>
             </div>
           </div>
 
-          <h2>Publication Theme ("Paper" Variant)</h2>
-          <p>
-            Theme-invariant white paper background (<code>--color-chart-paper</code>) for formal publication reports and export to light print mediums:
-          </p>
-
+          <h2>Publication Theme ("Paper" Canvas)</h2>
           <div class="viz-frame paper-surface">
             <div class="viz-header">
               <div class="viz-title">
-                FIG-02 · Publication Paper Canvas
+                FIG-02 · Publication Paper Canvas (--color-chart-paper)
               </div>
               <div class="viz-actions">
                 <span class="badge badge-default">PRINT-SAFE</span>
               </div>
             </div>
             <div class="viz-canvas">
-              <!-- Re-styled paper SVG diagram -->
-              <svg width="560" height="160" viewBox="0 0 560 160" style="background:#ffffff;">
-                <rect x="0" y="0" width="560" height="160" fill="#ffffff"/>
-                <!-- Axes -->
-                <line x1="50" y1="130" x2="520" y2="130" stroke="#000000" stroke-width="1.5"/>
-                <line x1="50" y1="20" x2="50" y2="130" stroke="#000000" stroke-width="1.5"/>
-                <!-- Grid -->
-                <line x1="50" y1="95" x2="520" y2="95" stroke="#cccccc" stroke-dasharray="2,2"/>
-                <line x1="50" y1="60" x2="520" y2="60" stroke="#cccccc" stroke-dasharray="2,2"/>
-                <!-- Data Series 1: Heavy black line -->
-                <polyline fill="none" stroke="#000000" stroke-width="2.5" points="50,120 120,80 190,95 260,45 330,60 400,30 470,40 520,25"/>
-                <!-- Data Series 2: Dashed gray line -->
-                <polyline fill="none" stroke="#737373" stroke-width="1.8" stroke-dasharray="4,3" points="50,125 120,110 190,105 260,85 330,80 400,65 470,55 520,50"/>
-                <!-- Axis labels -->
-                <text x="50" y="148" font-family="monospace" font-size="10" fill="#000000">T_0</text>
-                <text x="260" y="148" font-family="monospace" font-size="10" fill="#000000">T_MID</text>
-                <text x="505" y="148" font-family="monospace" font-size="10" fill="#000000">T_MAX</text>
-                <text x="18" y="25" font-family="monospace" font-size="9" fill="#000000">Y_MAX</text>
-                <text x="18" y="130" font-family="monospace" font-size="9" fill="#000000">0.0</text>
+              <svg width="640" height="170" viewBox="0 0 640 170" style="background:#ffffff;">
+                <rect x="0" y="0" width="640" height="170" fill="#ffffff"/>
+                <line x1="50" y1="135" x2="600" y2="135" stroke="#000000" stroke-width="1.5"/>
+                <line x1="50" y1="20" x2="50" y2="135" stroke="#000000" stroke-width="1.5"/>
+                <line x1="50" y1="95" x2="600" y2="95" stroke="#cccccc" stroke-dasharray="2,2"/>
+                <line x1="50" y1="55" x2="600" y2="55" stroke="#cccccc" stroke-dasharray="2,2"/>
+                <polyline fill="none" stroke="#000000" stroke-width="2.5" points="50,125 120,80 190,95 260,45 330,60 400,30 470,40 550,25 600,20"/>
+                <polyline fill="none" stroke="#737373" stroke-width="1.8" stroke-dasharray="4,3" points="50,130 120,110 190,105 260,85 330,80 400,65 470,55 550,50 600,45"/>
+                <text x="50" y="154" font-family="monospace" font-size="10" fill="#000000">T_0</text>
+                <text x="310" y="154" font-family="monospace" font-size="10" fill="#000000">T_MID</text>
+                <text x="580" y="154" font-family="monospace" font-size="10" fill="#000000">T_MAX</text>
+                <text x="16" y="25" font-family="monospace" font-size="9" fill="#000000">Y_MAX</text>
+                <text x="16" y="135" font-family="monospace" font-size="9" fill="#000000">0.0</text>
               </svg>
             </div>
             <div class="viz-footer">
-              <span>Theme: --color-chart-paper (Pure White Paper)</span>
+              <span>Theme: Pure White Paper (#ffffff)</span>
               <span>High Contrast · No Tinting</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 8: Mermaid Diagrams -->
+      <!-- SECTION 9: Large Mermaid Diagrams (Enhanced Size & Clarity) -->
       <section class="page" id="mermaid">
         <div class="page-inner">
           <div class="breadcrumb">Visualisations</div>
           <h1 class="page-title">Rendered Mermaid Diagrams</h1>
           <p class="page-lead">
-            Container component (<code>.mermaid-frame</code>) styled with pure neutral variables for directed graphs, flowcharts, and sequence pipelines.
+            High-legibility container component (<code>.mermaid-frame</code>) styled with custom pure neutral variables. Expanded dimensions ensure complex pipelines and decision matrices are clearly readable without clipping or tiny scaling.
           </p>
 
           <div class="mermaid-frame">
             <div class="viz-header">
               <div class="viz-title">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                SYS-01 · Local-First Inference Orchestration Pipeline
+                SYS-01 · Comprehensive Inference Execution &amp; Allocation Pipeline
               </div>
               <div class="viz-actions">
-                <span class="badge badge-default">LIVE MERMAID</span>
+                <span class="badge badge-default">FULL-SCALE DIAGRAM</span>
               </div>
             </div>
             <div class="mermaid-content">
               <pre class="mermaid">
-graph LR
-    REQ["User Turn Request"] --> DOOR["Choice-Laya Door"]
-    DOOR -->|P_pass >= 0.75| S1["System-1 Edge Slot"]
-    DOOR -->|P_pass < 0.75| S2["System-2 35B Body"]
-    S1 --> HOOK["Zero-Discovery Hook"]
-    S2 --> HOOK
-    HOOK --> COMP["Completion Stream"]
+flowchart TD
+    START["1. Incoming Agentic Prompt"] --> DOOR{"2. Choice-Laya Decision Door"}
+    DOOR -->|Confidence >= 0.75| S1["3. System-1 Edge Route (Fast-Path)"]
+    DOOR -->|Confidence < 0.75| S2["4. System-2 Workhorse (35B-A3B Body)"]
+    
+    subgraph EDGE["System-1 Execution Envelope"]
+        S1 --> S1_EXEC["ModernBERT Decisioning (20-38 ms)"]
+        S1_EXEC --> ZERO_HOOK["Instant Recall Hook (5.8 us Address)"]
+    end
+
+    subgraph WORKHORSE["System-2 Allocation Envelope"]
+        S2 --> CHECK_MEM{"VRAM Headroom Check"}
+        CHECK_MEM -->|Headroom >= 208 MiB| RESIDENT["On-Card Decode (33.5 tok/s)"]
+        CHECK_MEM -->|Over-Context Saturation| METAL["Mac Mini M4 Satellite Fallback"]
+    end
+
+    ZERO_HOOK --> MERGE["5. Output Stream Synthesizer"]
+    RESIDENT --> MERGE
+    METAL --> MERGE
+    MERGE --> DONE["6. Validated Turn Result"]
               </pre>
             </div>
             <div class="viz-footer">
-              <span>Engine: Mermaid.js (Client-Side Vector Render)</span>
-              <span>Palette: Pure Grayscale Theme Variables</span>
+              <span>Rendering Engine: Mermaid.js v10 (High Resolution Client-Side Vector)</span>
+              <span>Theme: Monochromatic R=G=B Scale</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 9: ASCII Architecture -->
+      <!-- SECTION 10: ASCII Architecture -->
       <section class="page" id="ascii">
         <div class="page-inner">
           <div class="breadcrumb">Visualisations</div>
@@ -573,106 +725,231 @@ graph LR
         </div>
       </section>
 
-      <!-- SECTION 10: Surfaces -->
-      <section class="page" id="surfaces">
+      <!-- SECTION 11: 9 Diverse Wireframe Layout Demos -->
+      <section class="page" id="wireframes">
         <div class="page-inner">
-          <div class="breadcrumb">Structures</div>
-          <h1 class="page-title">Cards &amp; Container Surfaces</h1>
+          <div class="breadcrumb">Layout Archetypes</div>
+          <h1 class="page-title">9 Wireframe Page Layouts</h1>
           <p class="page-lead">
-            Spatial containers utilizing subtle boundary lines and background luminance steps to organize content.
+            Curated architectural layout setups for dashboards, CAD inspectors, dual-stream telemetry, kanbans, and editorial readers — all conforming to pure grayscale guidelines.
           </p>
 
-          <div class="card-row">
-            <div class="card">
-              <div class="card-label">Surface Card 01</div>
-              <div class="card-value">12.4 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">ms</span></div>
+          <div class="wireframe-grid">
+
+            <!-- Archetype 1: Split Master-Detail -->
+            <div class="wireframe-card">
+              <div class="wireframe-header">
+                <span class="wireframe-title">01 · Master-Detail Split</span>
+                <span class="badge badge-subtle">LIST + VIEW</span>
+              </div>
+              <div class="wireframe-box">
+                <div class="wireframe-canvas">
+                  <div class="wf-l1">
+                    <div class="wf-box" style="display:flex;flex-direction:column;gap:3px;padding:4px;">
+                      <div class="wf-bar" style="height:12px;width:80%;"></div>
+                      <div class="wf-bar" style="height:8px;width:100%;"></div>
+                      <div class="wf-bar" style="height:8px;width:90%;"></div>
+                      <div class="wf-bar" style="height:8px;width:75%;"></div>
+                    </div>
+                    <div class="wf-box" style="padding:6px;display:flex;flex-direction:column;gap:4px;">
+                      <div class="wf-bar" style="height:14px;width:60%;"></div>
+                      <div class="wf-bar" style="height:60px;width:100%;"></div>
+                      <div class="wf-bar" style="height:10px;width:40%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="wireframe-meta">Left-side selectable record index with deep detail reading pane on the right.</div>
             </div>
-            <div class="card">
-              <div class="card-label">Surface Card 02</div>
-              <div class="card-value">8,188 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">MiB</span></div>
+
+            <!-- Archetype 2: Holy Grail Multi-Panel -->
+            <div class="wireframe-card">
+              <div class="wireframe-header">
+                <span class="wireframe-title">02 · Holy Grail 3-Column</span>
+                <span class="badge badge-subtle">NAV+BODY+SIDE</span>
+              </div>
+              <div class="wireframe-box">
+                <div class="wireframe-canvas">
+                  <div class="wf-l2">
+                    <div class="wf-bar" style="height:100%;width:100%;"></div>
+                    <div class="wf-l2-body">
+                      <div class="wf-box"></div>
+                      <div class="wf-box" style="border:1px dashed var(--color-border-strong);"></div>
+                      <div class="wf-box"></div>
+                    </div>
+                    <div class="wf-bar" style="height:100%;width:100%;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="wireframe-meta">Classic documentation shell: header, left nav tree, center text, right outline TOC, footer.</div>
             </div>
-            <div class="card">
-              <div class="card-label">Surface Card 03</div>
-              <div class="card-value">100.0 <span style="font-size:0.75rem;font-weight:400;color:var(--color-text-muted);">%</span></div>
+
+            <!-- Archetype 3: Metric KPI Dashboard -->
+            <div class="wireframe-card">
+              <div class="wireframe-header">
+                <span class="wireframe-title">03 · Executive KPI Dashboard</span>
+                <span class="badge badge-subtle">CARDS + CHARTS</span>
+              </div>
+              <div class="wireframe-box">
+                <div class="wireframe-canvas">
+                  <div class="wf-l3">
+                    <div class="wf-l3-kpis">
+                      <div class="wf-box"></div>
+                      <div class="wf-box"></div>
+                      <div class="wf-box"></div>
+                    </div>
+                    <div class="wf-l3-charts">
+                      <div class="wf-box"></div>
+                      <div class="wf-box"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="wireframe-meta">Top stat card strip with asymmetric multi-timeseries telemetry and distribution graphs below.</div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- SECTION 11: Tables -->
-      <section class="page" id="tables">
-        <div class="page-inner">
-          <div class="breadcrumb">Structures</div>
-          <h1 class="page-title">Data Tables &amp; Telemetry Lists</h1>
-          <p class="page-lead">
-            Information-dense tables with subtle hover feedback and clean tabular numeric alignment.
-          </p>
+            <!-- Archetype 4: Central Editorial Feed -->
+            <div class="wireframe-card">
+              <div class="wireframe-header">
+                <span class="wireframe-title">04 · Central Editorial Column</span>
+                <span class="badge badge-subtle">LONG-FORM</span>
+              </div>
+              <div class="wireframe-box">
+                <div class="wireframe-canvas">
+                  <div class="wf-l4">
+                    <div class="wf-l4-col">
+                      <div class="wf-bar" style="height:18px;width:70%;"></div>
+                      <div class="wf-bar" style="height:10px;width:100%;"></div>
+                      <div class="wf-bar" style="height:10px;width:95%;"></div>
+                      <div class="wf-box" style="height:48px;"></div>
+                      <div class="wf-bar" style="height:10px;width:90%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="wireframe-meta">High typographic whitespace magazine or research whitepaper column with constrained max-width.</div>
+            </div>
 
-          <div class="table-wrap">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Component</th>
-                  <th>Category</th>
-                  <th>DOM Selector</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Sidebar Navigation</td>
-                  <td>Shell</td>
-                  <td><code>.sidebar</code></td>
-                  <td><span class="badge badge-default">READY</span></td>
-                </tr>
-                <tr>
-                  <td>Theme Toggle Engine</td>
-                  <td>Theme</td>
-                  <td><code>[data-theme]</code></td>
-                  <td><span class="badge badge-default">ACTIVE</span></td>
-                </tr>
-                <tr>
-                  <td>Matplotlib Frame</td>
-                  <td>Visualisation</td>
-                  <td><code>.viz-frame</code></td>
-                  <td><span class="badge badge-default">READY</span></td>
-                </tr>
-                <tr>
-                  <td>Mermaid Diagram Frame</td>
-                  <td>Visualisation</td>
-                  <td><code>.mermaid-frame</code></td>
-                  <td><span class="badge badge-default">READY</span></td>
-                </tr>
-                <tr>
-                  <td>ASCII Box Frame</td>
-                  <td>Visualisation</td>
-                  <td><code>.ascii-frame</code></td>
-                  <td><span class="badge badge-default">READY</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+            <!-- Archetype 5: Multi-Stage Kanban Board -->
+            <div class="wireframe-card">
+              <div class="wireframe-header">
+                <span class="wireframe-title">05 · Multi-Stage Kanban Board</span>
+                <span class="badge badge-subtle">PIPELINE</span>
+              </div>
+              <div class="wireframe-box">
+                <div class="wireframe-canvas">
+                  <div class="wf-l5">
+                    <div class="wf-l5-col">
+                      <div class="wf-bar" style="height:10px;width:60%;"></div>
+                      <div class="wf-box" style="height:32px;"></div>
+                      <div class="wf-box" style="height:26px;"></div>
+                    </div>
+                    <div class="wf-l5-col">
+                      <div class="wf-bar" style="height:10px;width:60%;"></div>
+                      <div class="wf-box" style="height:38px;"></div>
+                    </div>
+                    <div class="wf-l5-col">
+                      <div class="wf-bar" style="height:10px;width:60%;"></div>
+                      <div class="wf-box" style="height:30px;"></div>
+                      <div class="wf-box" style="height:30px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="wireframe-meta">Horizontal lanes tracking deliverables across Specify → Analyze → Design → Execute → Review.</div>
+            </div>
 
-      <!-- SECTION 12: Forms -->
-      <section class="page" id="forms">
-        <div class="page-inner">
-          <div class="breadcrumb">Structures</div>
-          <h1 class="page-title">Inputs &amp; Form Controls</h1>
-          <p class="page-lead">
-            Accessible input fields with crisp focus rings and pure neutral styling.
-          </p>
+            <!-- Archetype 6: Dual Inspector CAD / Canvas -->
+            <div class="wireframe-card">
+              <div class="wireframe-header">
+                <span class="wireframe-title">06 · Canvas &amp; Inspector Tool</span>
+                <span class="badge badge-subtle">STUDIO / CAD</span>
+              </div>
+              <div class="wireframe-box">
+                <div class="wireframe-canvas">
+                  <div class="wf-l6">
+                    <div class="wf-box" style="display:flex;align-items:center;justify-content:center;">
+                      <div style="width:40px;height:40px;border:1px dashed var(--color-border-strong);border-radius:50%;"></div>
+                    </div>
+                    <div class="wf-box" style="display:flex;flex-direction:column;gap:3px;padding:4px;">
+                      <div class="wf-bar" style="height:10px;width:70%;"></div>
+                      <div class="wf-bar" style="height:6px;width:100%;"></div>
+                      <div class="wf-bar" style="height:6px;width:90%;"></div>
+                      <div class="wf-bar" style="height:6px;width:100%;"></div>
+                      <div class="wf-bar" style="height:6px;width:80%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="wireframe-meta">Full-viewport graphical modeling canvas backed by a contextual right property inspector.</div>
+            </div>
 
-          <div class="form-group">
-            <label class="form-label" for="sample-input">Repository Access Key</label>
-            <input type="text" id="sample-input" class="form-input" placeholder="e.g. repo-37-token" />
-            <span class="form-help">Focus input to view the high-contrast focus border.</span>
-          </div>
+            <!-- Archetype 7: Stacked Timeline Stream -->
+            <div class="wireframe-card">
+              <div class="wireframe-header">
+                <span class="wireframe-title">07 · Chronological Event Stream</span>
+                <span class="badge badge-subtle">TIMELINE</span>
+              </div>
+              <div class="wireframe-box">
+                <div class="wireframe-canvas">
+                  <div class="wf-l7">
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:4px;">
+                      <div style="width:6px;height:6px;border-radius:50%;background:var(--color-text-strong);"></div>
+                      <div style="width:1px;height:40px;background:var(--color-border-strong);"></div>
+                      <div style="width:6px;height:6px;border-radius:50%;background:var(--color-text-muted);"></div>
+                    </div>
+                    <div class="wf-l7-stream">
+                      <div class="wf-box" style="height:44px;padding:4px;"><div class="wf-bar" style="height:8px;width:50%;"></div></div>
+                      <div class="wf-box" style="height:44px;padding:4px;"><div class="wf-bar" style="height:8px;width:40%;"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="wireframe-meta">Linear event and git revision commit feed with vertical connector guides.</div>
+            </div>
 
-          <div class="button-row">
-            <button class="btn btn-primary">Save Changes</button>
-            <button class="btn btn-outline">Cancel</button>
+            <!-- Archetype 8: Modular Quad-Grid -->
+            <div class="wireframe-card">
+              <div class="wireframe-header">
+                <span class="wireframe-title">08 · Modular Quad Matrix</span>
+                <span class="badge badge-subtle">2x2 GRID</span>
+              </div>
+              <div class="wireframe-box">
+                <div class="wireframe-canvas">
+                  <div class="wf-l8">
+                    <div class="wf-box"></div>
+                    <div class="wf-box"></div>
+                    <div class="wf-box"></div>
+                    <div class="wf-box"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="wireframe-meta">4 equal-weight operational quadrants for real-time telemetry, node graph, and stdout logs.</div>
+            </div>
+
+            <!-- Archetype 9: Command Terminal & Log -->
+            <div class="wireframe-card">
+              <div class="wireframe-header">
+                <span class="wireframe-title">09 · Focused Command Terminal</span>
+                <span class="badge badge-subtle">CLI / REPL</span>
+              </div>
+              <div class="wireframe-box">
+                <div class="wireframe-canvas">
+                  <div class="wf-l9">
+                    <div class="wf-bar" style="height:100%;width:100%;"></div>
+                    <div class="wf-box" style="padding:6px;display:flex;flex-direction:column;gap:3px;">
+                      <div class="wf-bar" style="height:6px;width:35%;"></div>
+                      <div class="wf-bar" style="height:6px;width:85%;"></div>
+                      <div class="wf-bar" style="height:6px;width:60%;"></div>
+                      <div class="wf-bar" style="height:6px;width:95%;"></div>
+                    </div>
+                    <div class="wf-bar" style="height:100%;width:100%;"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="wireframe-meta">Terminal pane with breadcrumb bar, scrolling monospace buffer, and bottom command input seam.</div>
+            </div>
+
           </div>
         </div>
       </section>

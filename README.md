@@ -1,6 +1,6 @@
 # Component Library (Pure Grayscale Design System)
 
-A living UI component library and showcase based on the design system documentation in `$WIKI/gui/design-system/`.
+A living UI component library, visualizer suite, and wireframe catalog based on the design system documentation in `$WIKI/gui/design-system/`.
 
 Built strictly using **pure grayscales** (zero chromatic tinting, $R = G = B$).
 
@@ -20,90 +20,48 @@ Built strictly using **pure grayscales** (zero chromatic tinting, $R = G = B$).
   - Sidebar & Cards: **Dark gray** `#121212` (`var(--gray-10)`).
 - **Theme Toggle**: In-header and in-sidebar toggle button syncing with `localStorage` and OS preference (`prefers-color-scheme`).
 
-## Components Included
+## Component Variety & Categories (3x Expanded)
 
 ### 1. Foundations
-- **Grayscale Token Scale**: Swatches and token definitions for 15 pure neutral steps.
-- **Typographic Scale**: Hierarchical sans-serif titles and monospace telemetry labels.
+- **Overview & Tokens**: Consolidated cards displaying the full 15-step swatches and live typography scale directly in the foundations view.
+- **Typography Scale**: Display (2.0rem), Heading 1 (1.5rem), Subheading (1.15rem), Body (0.95rem), and Monospace Telemetry (0.78rem).
 
 ### 2. Primitives
-- **Buttons**: Primary Solid, Secondary Surface, Outline Stroke, and Disabled states with adaptive contrast inversion.
-- **Badges & Tags**: Status indicators mapped to pure shade contrast hierarchy.
-- **Callouts & Alerts**: Info, subtle technical details, and elevated caution notices.
+- **Buttons & Groups**: Primary solid, secondary surface, outline stroke, ghost text, disabled, sizes (`.btn-sm`, default, `.btn-lg`), icon buttons, joined button groups (`.btn-group`), and segmented tab controls (`.segmented-control`).
+- **Badges & Tags**: Solid active, default pill, subtle outline, high-contrast bordered, rounded pills, category markers, and live pulsating state dots.
+- **Callouts & Alerts**: Standard notice (`callout-info`), subtle implementation detail (`callout-subtle`), elevated caution boundary (`callout-warn`), blocked gate refusal (`callout-error`), and minimal inline directive (`callout-minimal`).
 
-### 3. Visualisations
-- **Matplotlib Chart Wrapper (`.viz-frame`)**:
-  - Header actions, dark/light adaptive canvas, publication paper canvas (`.paper-surface`), metadata footer.
-  - Native Python Matplotlib SVG vector output with pure neutral palettes.
-- **Mermaid Diagrams (`.mermaid-frame`)**:
-  - Client-side rendered Mermaid.js diagrams using custom grayscale theme variables.
-  - Directional flowcharts, state transitions, and node highlights.
-- **ASCII Architecture (`.ascii-frame`)**:
-  - Monospace UTF-8 Unicode box-drawing diagram wrapper (`.ascii-content`) preserving column alignment with zero reflow.
+### 3. Structures
+- **Cards & Metric Tiles**: High-density 3-column KPI tiles, interactive clickable cards with hover elevation (`.card-interactive`), and heavy 2px bordered boundary cards (`.card-bordered .card-elevated`).
+- **Inputs, Toggles & Controls**: Text fields, dropdown selects, multiline textareas, accessible custom checkboxes, radio groups, binary toggle switches (`.switch-track`), and capacity progress meters (`.progress-bar`).
+- **Data Tables**: Standard responsive table, compact dense table (`.table-dense`), and alternating striped table (`.table-striped`).
 
-### 4. Structures
-- **Cards & Metric Surfaces**: Quantitative metric cards with monospace units and subtle elevation.
-- **Data Tables**: Tabular telemetry displays with clean hover feedback.
-- **Form Controls**: Text inputs with adaptive high-contrast focus rings.
+### 4. Visualisations
+- **Matplotlib Chart Wrapper (`.viz-frame`)**: Dark adaptive telemetry curves alongside publication-ready pure white paper canvases (`.paper-surface`).
+- **Expanded Mermaid Diagrams (`.mermaid-frame`)**: Full-scale rendered flowcharts (`min-height: 380px`, `max-width: 860px`) preventing tiny clipped nodes and ensuring clear text readability.
+- **ASCII Box Architecture (`.ascii-frame`)**: Monospace UTF-8 Unicode box-drawing diagram wrapper preserving column alignment with zero reflow.
+
+### 5. Layout Archetypes (9 Wireframe Page Setups)
+1. **01 · Master-Detail Split**: Left record index with right inspection reader.
+2. **02 · Holy Grail 3-Column**: Header, navigation tree, center editorial, right TOC outline, footer.
+3. **03 · Executive KPI Dashboard**: Top 3-metric strip + asymmetric timeseries and distribution telemetry.
+4. **04 · Central Editorial Column**: High-whitespace single reading column for research whitepapers.
+5. **05 · Multi-Stage Kanban Board**: Horizontal lanes tracking deliverables across sequential phases.
+6. **06 · Canvas & Inspector Tool**: Full-viewport graphical workspace backed by a right-hand property pane.
+7. **07 · Chronological Event Stream**: Vertical timeline stream with commit node connectors.
+8. **08 · Modular Quad Matrix**: 4 equal-weight operational quadrants for real-time monitoring.
+9. **09 · Focused Command Terminal**: Monospace buffer window with prompt execution seam.
 
 ## Repository Structure
 
 ```
 gh-pages-demo/
-├── index.html        — Interactive component library showcase
-├── style.css         — Pure grayscale CSS tokens, light/dark themes, layout shell, and component primitives
+├── index.html        — Interactive component library showcase & layout catalog
+├── style.css         — Pure grayscale CSS tokens, 9 wireframe layouts, and expanded primitives
 ├── app.js            — Theme manager, native IntersectionObserver scroll-spy, and mobile navigation
 ├── sample-chart.svg  — Pure grayscale vector chart generated via Python/matplotlib
-├── README.md         — Component system guide
+├── README.md         — Complete component and layout documentation
 └── .nojekyll         — Direct GitHub Pages static deployment
-```
-
-## Adding New Visualisations
-
-### Matplotlib Plot
-```python
-import matplotlib.pyplot as plt
-fig, ax = plt.subplots()
-fig.patch.set_facecolor('#121212')
-ax.set_facecolor('#121212')
-ax.plot(x, y, color='#ffffff')
-fig.savefig('plot.svg', facecolor=fig.get_facecolor())
-```
-Wrap in:
-```html
-<div class="viz-frame">
-  <div class="viz-header"><div class="viz-title">FIG · Plot Title</div></div>
-  <div class="viz-canvas"><img src="plot.svg" /></div>
-  <div class="viz-footer"><span>Metadata caption</span></div>
-</div>
-```
-
-### Mermaid Diagram
-```html
-<div class="mermaid-frame">
-  <div class="viz-header"><div class="viz-title">DIAG · System Pipeline</div></div>
-  <div class="mermaid-content">
-    <pre class="mermaid">
-      graph LR
-        A[Input] --> B[Processing]
-        B --> C[Output]
-    </pre>
-  </div>
-  <div class="viz-footer"><span>Engine: Mermaid.js</span></div>
-</div>
-```
-
-### ASCII Architecture Frame
-```html
-<div class="ascii-frame">
-  <div class="viz-header"><div class="viz-title">TOPOLOGY · Architecture</div></div>
-  <pre class="ascii-content">
-┌─────────────┐     ┌─────────────┐
-│  Component  │ ──► │  Service    │
-└─────────────┘     └─────────────┘
-  </pre>
-  <div class="viz-footer"><span>UTF-8 Box Drawing</span></div>
-</div>
 ```
 
 ## License
